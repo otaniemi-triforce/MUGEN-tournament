@@ -27,6 +27,9 @@ BASE_ADDRESS = 0x00400000
 WIN_ADDRESS  = BASE_ADDRESS + 0x001040E8
 THREADSTACK0 = 0x0019FF7C - 0x418
 
+PLAYER1 = 1
+PLAYER2 = 2
+
 
 class MugenOperator():
 
@@ -39,8 +42,11 @@ class MugenOperator():
         self.char2 = -1
         self.winner = -1
         self.reset()
-        
-    def reset(self):
+    
+    # Resets variables. Set kill = True to also kill MUGEN.
+    def reset(self, kill = False):
+        if(kill):
+            os.kill(self.p.pid, signal.SIGTERM)
         logpurged = False
         while not logpurged:
             try:
@@ -66,30 +72,34 @@ class MugenOperator():
         self.loadingchar = 2
         self.state = "loading"
     
+    # Return state of MUGEN
+    def get_state(self):
+        return self.state
+    
     # Add a character to a list, returns True if success
     def add_character(self, charnum, pl):
         if(charnum < 0):
             return False
-        if(pl == 1):
+        if(pl == PLAYER1):
             self.player1_chars.append(charnum)
             return True
-        elif(pl == 2):
+        elif(pl == PLAYER2):
             self.player2_chars.append(charnum)
             return True
         return False
     
     # returns the character queue for player pl
     def get_queue(self, pl):
-        if(pl == 1):
+        if(pl == PLAYER1):
             return self.player1_chars
-        elif(pl == 2):
+        elif(pl == PLAYER2):
             return self.player2_chars
             
     # returns the character queue size for player pl
     def get_queue_size(self, pl):
-        if(pl == 1):
+        if(pl == PLAYER1):
             return len(self.player1_chars)
-        elif(pl == 2):
+        elif(pl == PLAYER2):
             return len(self.player2_chars)
 
     # Read current match status from MUGEN's memory
@@ -99,9 +109,9 @@ class MugenOperator():
         p2wins = int(self.p.read(self.p.get_pointer(WIN_ADDRESS, [0x00008728])))
         self.debug("Match status: "+str(p1wins)+" - "+str(p2wins))
         if(p1wins == ROUNDS):
-            self.winner = 1
+            self.winner = PLAYER1
         if(p2wins == ROUNDS):
-            self.winner = 2
+            self.winner = PLAYER2
 
 
     # Scan the log file and do operations based on lines there
@@ -160,9 +170,8 @@ class MugenOperator():
                     self.winner = 0
                     
                 # Kill mugen (if it is still alive showing error message)
-                print("MUGEN failed, killing it!")
-                os.kill(self.p.pid, signal.SIGTERM)
-                self.reset() # reset everything
+                print("MUGEN failed, restarting it!")
+                self.reset(True) # reset everything
                 return
 
     def debug(self, msg):
@@ -172,7 +181,7 @@ class MugenOperator():
 
     def select_char(self,charnum, player):
     # Player 1
-        if(player == 1):
+        if(player == PLAYER1):
             char1_ptr = self.p.get_pointer(THREADSTACK0, [0x354 + 0x10]) # Get pointer to the char variable in memory
             self.press(OK,1) # Accept anything
             self.char1 = charnum
@@ -180,7 +189,7 @@ class MugenOperator():
                 debug("Failed to write P1 character!")
 
     # Player 2
-        else:
+        elif(player == PLAYER2):
             char2_ptr = self.p.get_pointer(THREADSTACK0, [0x1E30 + 0x10]) # Get pointer to the char variable in memory
             self.press(OK,1) # Accept anything
             self.char2 = charnum
@@ -203,9 +212,9 @@ class MugenOperator():
             elif(self.state == "charselect"):
                 if(len(self.player1_chars) > 0 and len(self.player2_chars) > 0):
                     self.press(OK,1) # TEAM MODE for P1 (single)
-                    self.select_char(self.player1_chars.pop(0),1)
+                    self.select_char(self.player1_chars.pop(0),PLAYER1)
                     self.press(OK,1) # TEAM MODE for P2 (single)
-                    self.select_char(self.player2_chars.pop(0),2)
+                    self.select_char(self.player2_chars.pop(0),PLAYER2)
                     self.press(OK,1) # STAGE SELECT (random)
                     
             elif(self.state == "fight"):
@@ -225,17 +234,17 @@ def main():
         win = operator.scan()
         if(win == -1):
             pass
-        if(win == 1):
+        if(win == PLAYER1):
             print("PLAYER 1 WON")
-        if(win == 2):
+        if(win == PLAYER2):
             print("PLAYER 2 WON")
         if(win == 0):
             print("DRAW, HOW LAME")
             
         if(operator.get_queue_size(1) == 0 and len(p1) > 0):
-            print(operator.add_character(p1.pop(0), 1))
+            print(operator.add_character(p1.pop(0), PLAYER1))
         if(operator.get_queue_size(2) == 0 and len(p2) > 0):
-            print(operator.add_character(p2.pop(0), 2))
+            print(operator.add_character(p2.pop(0), PLAYER2))
         sleep(1)
 if __name__ == "__main__":
     main()
