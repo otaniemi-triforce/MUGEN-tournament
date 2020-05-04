@@ -48,7 +48,11 @@ class MugenOperator():
     # Resets variables. Set kill = True to also kill MUGEN.
     def reset(self, kill = False):
         if(kill):
-            os.kill(self.p.pid, signal.SIGTERM)
+            try:
+                os.kill(self.p.pid, signal.SIGTERM)
+            except PermissionError:
+                debug("Tried to kill MUGEN, but it seems to be already dead.")
+                pass
         logpurged = False
         while not logpurged:
             try:
