@@ -9,8 +9,11 @@ import signal
 import math
 import subprocess
 
-logfile = "mugen.log" # Path to log file to monitor
-badcharfile = "badchar.txt" # Path to a file containing list of bad characters
+logfile = "mugen.log"               # Path to log file to monitor
+charfolder = "chars"                # Chars folder
+selectfile = "data/db/select.def"   # Select file path
+charfile = "charlist.txt"           # File to write list of characters to
+badcharfile = "badchar.txt"         # Path to a file containing list of bad characters
 
 OK = "r"            # Button to press for selecting
 NEXT = 'd'          # Button to press to move right
@@ -38,7 +41,6 @@ SELECT_STATE = 2
 VS_STATE = 3
 FIGHT_STATE = 4
 
-MAX_INDEX = 2138 # Used to fix issues with last row
 
 
 class MugenOperator():
@@ -51,6 +53,9 @@ class MugenOperator():
         self.char1 = -1
         self.char2 = -1
         self.winner = -1
+        self.num_of_characters = self.check_characterlist()  # index of last char
+        print("MUGEN OPERATOR STARTED. Number of characters detected: "+str(self.num_of_characters+1))
+        self.lastrow = self.calculate_wanted_point(self.num_of_characters)
         self.reset()
     
     # Resets variables. Set kill = True to also kill MUGEN.
@@ -235,10 +240,9 @@ class MugenOperator():
 
     def select_char(self, charnum, player):
         pos = self.calculate_wanted_point(charnum)
-        lastrow = self.calculate_wanted_point(MAX_INDEX)[1]
     # Player 1
         if(player == PLAYER1):
-            if(self.player1_cursor[1] == lastrow):  # Move up to a full row
+            if(self.player1_cursor[1] == self.lastrow):  # Move up to a full row
                 self.press(UP,1)
                 self.player1_cursor[1] -= 1
             while(self.player1_cursor != pos):
@@ -262,7 +266,7 @@ class MugenOperator():
             self.char1 = charnum
     # Player 2
         elif(player == PLAYER2):
-            if(self.player2_cursor[1] == lastrow):  # Move up to a full row
+            if(self.player2_cursor[1] == self.lastrow):  # Move up to a full row
                 self.press(UP,1)
                 self.player2_cursor[1] -= 1
             while(self.player2_cursor != pos):
@@ -308,6 +312,50 @@ class MugenOperator():
             self.output_keyboard.press(button)
             sleep(HOLDTIME)
             self.output_keyboard.release(button)
+    
+    # Checks the select file, returns number of characters, and writes list of chars to file
+    def check_characterlist(self, write_to_file = False, includepath = False):
+        f = open(selectfile,'r')
+        lines = f.readlines()
+        f.close()
+        if(write_to_file):
+            l = open(charfile,'w', encoding="utf8", errors="ignore")
+        index = 0   # Index of next character found
+        for line in lines:
+            if(line.strip().startswith(";")): # Commented line
+                continue
+            if(line.strip().startswith("[ExtraStages]")): # End of character list
+                break    
+            parts = line.split(",")[0].strip().split("/")
+            if(len(parts) < 3): # Some other line, don't care
+                continue
+            charpath = charfolder
+            for part in parts:
+                charpath = os.path.join(charpath,part)
+            if(not charpath.endswith(".def")):
+                charpath = charpath + ".def"
+            # Try opening the character file, if FileNotFoundError raised then file is missing and can be skipped
+            try:
+                cf = open(charpath,'r', encoding="utf8", errors="replace")
+                clines = cf.readlines()
+                cf.close()
+                charname = ""
+                for cline in clines:
+                    if(cline.lower().strip().startswith("displayname") or (cline.lower().strip().startswith("name") and charname == "")):
+                        cparts = cline.split("=")
+                        charname = cparts[1].split('"')[1].strip()
+                if(includepath):
+                    msg = str(index) + "," + str(charname)+","+str(charpath)+"\n"
+                else:
+                    msg = str(index) + "," + str(charname)+"\n"
+                if(write_to_file):
+                    l.write(msg)
+            except FileNotFoundError:
+                pass
+            index += 1
+        if(write_to_file):
+            l.close()
+        return index - 1
 
     # Returns the number of winning player (1 or 2), -1 if no match has ended since last scan, 0 if draw (not sure when that would happen) 
     def scan(self):
@@ -342,7 +390,7 @@ def main():
     print("STARTING")
     while(1):
         if(operator.are_you_still_there()):
-            print("Still alive, state: "+operator.get_state()+", queue lengths: "+str(operator.get_queue_size(1))+"-"+str(operator.get_queue_size(2))+", idle: "+str(idlecounter1)+"-"+str(idlecounter2))
+            print("Still alive, state: "+str(operator.get_state())+", queue lengths: "+str(operator.get_queue_size(1))+"-"+str(operator.get_queue_size(2))+", idle: "+str(idlecounter1)+"-"+str(idlecounter2))
         else:
             print("MUGEN is dead, abandon all hope.")
 
