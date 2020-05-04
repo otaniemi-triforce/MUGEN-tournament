@@ -32,6 +32,12 @@ THREADSTACK0 = 0x0019FF7C - 0x418
 PLAYER1 = 1
 PLAYER2 = 2
 
+LOADING_STATE = 0
+MENU_STATE = 1
+SELECT_STATE = 2
+VS_STATE = 3
+FIGHT_STATE = 4
+
 
 class MugenOperator():
 
@@ -78,7 +84,7 @@ class MugenOperator():
         self.loadingchar = 2
         self.player1_cursor = [0,0]
         self.player2_cursor = [1,0]
-        self.state = "loading"
+        self.state = LOADING_STATE
     
     # Check if MUGEN is still alive
     def are_you_still_there(self):
@@ -141,17 +147,17 @@ class MugenOperator():
             
             # Main menu loaded
             if(line.startswith("Mode select init")):
-                self.state = "menu"
+                self.state = MENU_STATE
                 continue
 
             # Character select loaded
             elif(line.startswith("Charsel init")):
-                self.state = "charselect"
+                self.state = SELECT_STATE
                 continue
                 
             # Fight
             elif(line.startswith("Game loop init")):
-                self.state = "fight"
+                self.state = FIGHT_STATE
                 continue
             
             
@@ -297,19 +303,19 @@ class MugenOperator():
     def scan(self):
         oldstate = self.state
         self.scanlines()
-        if(oldstate != self.state or (self.state == "charselect" and oldstate == "charselect")):    # Has Game state changed?
-            if(self.state == "menu"):
+        if(oldstate != self.state or (self.state == SELECT_STATE and oldstate == SELECT_STATE)):    # Has Game state changed?
+            if(self.state == MENU_STATE):
                 self.press(OK,1)
-            elif(self.state == "charselect"):
+            elif(self.state == SELECT_STATE):
                 if(len(self.player1_chars) > 0 and len(self.player2_chars) > 0):
                     self.press(OK,1) # TEAM MODE for P1 (single)
                     self.select_char(self.player1_chars.pop(0),PLAYER1)
                     self.press(OK,1) # TEAM MODE for P2 (single)
                     self.select_char(self.player2_chars.pop(0),PLAYER2)
                     self.press(OK,1) # STAGE SELECT (random)
-                    self.state = "VSscreen"
+                    self.state = VS_STATE
                     
-            elif(self.state == "fight"):
+            elif(self.state == FIGHT_STATE):
                 pass    # Let 'em fight
         ret = self.winner
         self.winner = -1
@@ -340,13 +346,13 @@ def main():
         if(win == 0):
             print("DRAW, HOW LAME")
             
-        if(operator.get_queue_size(1) == 0 and len(p1) > 0 and operator.get_state() == "charselect"):
+        if(operator.get_queue_size(1) == 0 and len(p1) > 0 and operator.get_state() == SELECT_STATE):
             idlecounter1 -= 1
             if(idlecounter1 < 0):
                 print("PIM")
                 print(operator.add_character(p1.pop(0), PLAYER1))
                 idlecounter1 = 10
-        if(operator.get_queue_size(2) == 0 and len(p2) > 0 and operator.get_state() == "charselect"):
+        if(operator.get_queue_size(2) == 0 and len(p2) > 0 and operator.get_state() == SELECT_STATE):
             idlecounter2 -= 1
             if(idlecounter2 < 0):
                 print("POM")
