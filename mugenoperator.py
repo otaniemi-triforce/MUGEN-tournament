@@ -53,9 +53,9 @@ class MugenOperator():
         self.char1 = -1
         self.char2 = -1
         self.winner = -1
-        self.num_of_characters = self.check_characterlist()  # index of last char
+        self.max_id = self.check_characterlist()  # index of last char
         print("MUGEN OPERATOR STARTED. Number of characters detected: "+str(self.max_id + 1))
-        self.lastrow = self.calculate_wanted_point(self.num_of_characters)
+        self.lastrow = self.calculate_wanted_point(self.max_id)
         self.reset()
     
     # Resets variables. Set kill = True to also kill MUGEN.
