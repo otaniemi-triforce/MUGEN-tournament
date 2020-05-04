@@ -38,6 +38,8 @@ SELECT_STATE = 2
 VS_STATE = 3
 FIGHT_STATE = 4
 
+MAX_INDEX = 2138 # Used to fix issues with last row
+
 
 class MugenOperator():
 
@@ -233,9 +235,12 @@ class MugenOperator():
 
     def select_char(self, charnum, player):
         pos = self.calculate_wanted_point(charnum)
-
+        lastrow = self.calculate_wanted_point(MAX_INDEX)[1]
     # Player 1
         if(player == PLAYER1):
+            if(self.player1_cursor[1] == lastrow):  # Move up to a full row
+                self.press(UP,1)
+                self.player1_cursor[1] -= 1
             while(self.player1_cursor != pos):
                 if(pos[0] < self.player1_cursor[0]):
                     self.press(PREV,1)
@@ -257,6 +262,9 @@ class MugenOperator():
             self.char1 = charnum
     # Player 2
         elif(player == PLAYER2):
+            if(self.player2_cursor[1] == lastrow):  # Move up to a full row
+                self.press(UP,1)
+                self.player2_cursor[1] -= 1
             while(self.player2_cursor != pos):
                 if(pos[0] < self.player2_cursor[0]):
                     self.press(PREV,1)
