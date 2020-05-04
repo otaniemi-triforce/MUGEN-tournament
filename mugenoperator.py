@@ -59,16 +59,18 @@ class MugenOperator():
             except PermissionError:
                 debug("Tried to kill MUGEN, but it seems to be already dead.")
                 pass
-        logpurged = False
-        while not logpurged:
-            try:
-                os.remove(logfile)
-                open(logfile, 'w').close()
-                logpurged = True
-            except PermissionError: # Someone is still holding the file, give it a sec
-                sleep(1)
-                pass
-        os.startfile(PROCESS_NAME)  # Start MUGEN
+        # If mugen is not already running (in most cases it shouldn't be)
+        if (not self.are_you_still_there()):
+            logpurged = False
+            while not logpurged:
+                try:
+                    os.remove(logfile)
+                    open(logfile, 'w').close()
+                    logpurged = True
+                except PermissionError: # Someone is still holding the file, give it a sec
+                    sleep(1)
+                    pass
+            os.startfile(PROCESS_NAME)  # Start MUGEN
         processloaded = False
         while not processloaded:
             try:
