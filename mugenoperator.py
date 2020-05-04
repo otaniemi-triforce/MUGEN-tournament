@@ -6,6 +6,8 @@ from time import sleep
 from ReadWriteMemory import ReadWriteMemory
 import os
 import signal
+import math
+import subprocess
 
 logfile = "mugen.log" # Path to log file to monitor
 badcharfile = "badchar.txt" # Path to a file containing list of bad characters
@@ -17,7 +19,7 @@ UP = 'w'            # Button to press to move up
 DOWN = 's'          # Button to press to move down
 
 ROUNDS = 2          # Rounds won required to win the match
-HOLDTIME = 0.1      # Time to hold r button
+HOLDTIME = 0.02     # Time to hold r button
 debug = True        # Enable debug prints
 
 
@@ -70,7 +72,14 @@ class MugenOperator():
         self.win2_ptr = self.p.get_pointer(WIN_ADDRESS, [0x00008728])
         self.index = 0
         self.loadingchar = 2
+        self.player1_cursor = [0,0]
+        self.player2_cursor = [1,0]
         self.state = "loading"
+    
+    # Check if MUGEN is still alive
+    def are_you_still_there(self):
+        processes = subprocess.Popen('tasklist', stdin=subprocess.PIPE, stderr=subprocess.PIPE, stdout=subprocess.PIPE).communicate()[0]
+        return (PROCESS_NAME.encode("utf8") in processes)
     
     # Return state of MUGEN
     def get_state(self):
@@ -149,6 +158,17 @@ class MugenOperator():
                 self.readmem()
                 continue
 
+            # Char selected, check that it was same as it should be
+            if(line.startswith("Selected char")):
+                num = int(line.split()[2])
+                pl = line.split()[5]
+                if(pl == "0.0"):
+                    if(num != self.char1):
+                        self.debug("ERROR: Character mismatch. P"+str(pl)+" char should be "+str(self.char1)+", but "+str(num)+" was loaded!")
+                else:
+                    if(num != self.char2):
+                        self.debug("ERROR: Character mismatch. P"+str(pl)+" char should be "+str(self.char1)+", but "+str(num)+" was loaded!")
+            
             # Loading character
             if(line.startswith("Loading character")):
                 self.loadingchar = int(self.loadingchar == 1) + 1 # Used for figuring out what failed, if any
@@ -179,6 +199,8 @@ class MugenOperator():
         if(debug):
             print(msg)
 
+    # Memory based character load, memory addresses are machine specific! Not used in this version.
+    '''
     def select_char(self,charnum, player):
     # Player 1
         if(player == PLAYER1):
@@ -195,7 +217,72 @@ class MugenOperator():
             self.char2 = charnum
             if(not self.p.write(char2_ptr,charnum)): # Overwrite whatever was just accepted
                 debug("Failed to write P2 character!")
+    '''
 
+    def select_char(self, charnum, player):
+        pos = self.calculate_wanted_point(charnum)
+
+    # Player 1
+        if(player == PLAYER1):
+            while(self.player1_cursor != pos):
+                if(pos[0] < self.player1_cursor[0]):
+                    self.press(PREV,1)
+                    self.player1_cursor[0] -= 1
+                    continue
+                elif(pos[0] > self.player1_cursor[0]):
+                    self.press(NEXT,1)
+                    self.player1_cursor[0] += 1
+                    continue
+
+                if(pos[1] < self.player1_cursor[1]):
+                    self.press(UP,1)
+                    self.player1_cursor[1] -= 1
+                    continue
+                elif(pos[1] > self.player1_cursor[1]):
+                    self.press(DOWN,1)
+                    self.player1_cursor[1] += 1
+                    continue
+            self.char1 = charnum
+    # Player 2
+        elif(player == PLAYER2):
+            while(self.player2_cursor != pos):
+                if(pos[0] < self.player2_cursor[0]):
+                    self.press(PREV,1)
+                    self.player2_cursor[0] -= 1
+                    continue
+                elif(pos[0] > self.player2_cursor[0]):
+                    self.press(NEXT,1)
+                    self.player2_cursor[0] += 1
+                    continue
+
+                if(pos[1] < self.player2_cursor[1]):
+                    self.press(UP,1)
+                    self.player2_cursor[1] -= 1
+                    continue
+                elif(pos[1] > self.player2_cursor[1]):
+                    self.press(DOWN,1)
+                    self.player2_cursor[1] += 1
+                    continue
+            self.char2 = charnum
+        else:
+            debug("Can only select character for player 1 or 2. Check your inputs for typos!")
+        self.press(OK,1)    # Select the character
+
+    # Calculate the wanted position for the cursor
+    def calculate_wanted_point(self, charnum):
+        if(charnum > 56): # Not on first row
+            col = ((charnum - 56)%66)
+            row = math.floor((charnum - 56)/66)+1
+            return [col,row] 
+        else:
+            col = charnum + 2
+            if(charnum > 16 and charnum < 37):
+                col += 4
+            elif(charnum > 36):
+                col += 8
+        return [col, 0]
+
+    # Presses a button n times
     def press(self, button, times):
         for i in range(times):
             self.output_keyboard.press(button)
@@ -206,7 +293,7 @@ class MugenOperator():
     def scan(self):
         oldstate = self.state
         self.scanlines()
-        if(oldstate != self.state):    # Has Game state changed?
+        if(oldstate != self.state or (self.state == "charselect" and oldstate == "charselect")):    # Has Game state changed?
             if(self.state == "menu"):
                 self.press(OK,1)
             elif(self.state == "charselect"):
@@ -216,6 +303,7 @@ class MugenOperator():
                     self.press(OK,1) # TEAM MODE for P2 (single)
                     self.select_char(self.player2_chars.pop(0),PLAYER2)
                     self.press(OK,1) # STAGE SELECT (random)
+                    self.state = "VSscreen"
                     
             elif(self.state == "fight"):
                 pass    # Let 'em fight
@@ -223,14 +311,21 @@ class MugenOperator():
         self.winner = -1
         return ret
         
-# FOR DEBUG PURPOSES
+# FOR DEBUG PURPOSES, REMOVE ANYTHING BELOW THIS COMMENT BEFORE ACTUAL USE
 def main():
     operator = MugenOperator()
     p1 = [23,176,37,555]
     p2 = [14,67,234,987]
     win = -1
+    idlecounter1 = 10
+    idlecounter2 = 15
     print("STARTING")
     while(1):
+        if(operator.are_you_still_there()):
+            print("Still alive, state: "+operator.get_state()+", queue lengths: "+str(operator.get_queue_size(1))+"-"+str(operator.get_queue_size(2))+", idle: "+str(idlecounter1)+"-"+str(idlecounter2))
+        else:
+            print("MUGEN is dead, abandon all hope.")
+
         win = operator.scan()
         if(win == -1):
             pass
@@ -241,10 +336,19 @@ def main():
         if(win == 0):
             print("DRAW, HOW LAME")
             
-        if(operator.get_queue_size(1) == 0 and len(p1) > 0):
-            print(operator.add_character(p1.pop(0), PLAYER1))
-        if(operator.get_queue_size(2) == 0 and len(p2) > 0):
-            print(operator.add_character(p2.pop(0), PLAYER2))
+        if(operator.get_queue_size(1) == 0 and len(p1) > 0 and operator.get_state() == "charselect"):
+            idlecounter1 -= 1
+            if(idlecounter1 < 0):
+                print("PIM")
+                print(operator.add_character(p1.pop(0), PLAYER1))
+                idlecounter1 = 10
+        if(operator.get_queue_size(2) == 0 and len(p2) > 0 and operator.get_state() == "charselect"):
+            idlecounter2 -= 1
+            if(idlecounter2 < 0):
+                print("POM")
+                print(operator.add_character(p2.pop(0), PLAYER2))
+                idlecounter2 = 15
         sleep(1)
+        
 if __name__ == "__main__":
     main()
