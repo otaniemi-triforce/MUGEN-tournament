@@ -54,7 +54,7 @@ class MugenOperator():
         self.char2 = -1
         self.winner = -1
         self.num_of_characters = self.check_characterlist()  # index of last char
-        print("MUGEN OPERATOR STARTED. Number of characters detected: "+str(self.num_of_characters+1))
+        print("MUGEN OPERATOR STARTED. Number of characters detected: "+str(self.max_id + 1))
         self.lastrow = self.calculate_wanted_point(self.num_of_characters)
         self.reset()
     
@@ -99,6 +99,9 @@ class MugenOperator():
     def are_you_still_there(self):
         processes = subprocess.Popen('tasklist', stdin=subprocess.PIPE, stderr=subprocess.PIPE, stdout=subprocess.PIPE).communicate()[0]
         return (PROCESS_NAME.encode("utf8") in processes)
+    
+    def get_max_ID(self):
+        return self.max_id
     
     # Return state of MUGEN
     def get_state(self):
@@ -313,7 +316,7 @@ class MugenOperator():
             sleep(HOLDTIME)
             self.output_keyboard.release(button)
     
-    # Checks the select file, returns number of characters, and writes list of chars to file
+    # Checks the select file, returns ID of last character, and writes list of chars to file if params true
     def check_characterlist(self, write_to_file = False, includepath = False):
         f = open(selectfile,'r')
         lines = f.readlines()
