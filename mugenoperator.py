@@ -160,6 +160,8 @@ class MugenOperator():
             # Main menu loaded
             if(line.startswith("Mode select init")):
                 self.state = MENU_STATE
+                self.player1_cursor = [0,0]
+                self.player2_cursor = [1,0]
                 continue
 
             # Character select loaded
