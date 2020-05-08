@@ -40,6 +40,7 @@ MENU_STATE = 1
 SELECT_STATE = 2
 VS_STATE = 3
 FIGHT_STATE = 4
+DEAD_STATE = 5
 
 
 
@@ -53,6 +54,8 @@ class MugenOperator():
         self.char1 = -1
         self.char2 = -1
         self.winner = -1
+        self.index = 0
+        self.p = None
         self.max_id = self.check_characterlist()  # index of last char
         print("MUGEN OPERATOR STARTED. Number of characters detected: "+str(self.max_id + 1))
         self.lastrow = self.calculate_wanted_point(self.max_id)
@@ -60,13 +63,13 @@ class MugenOperator():
     
     # Resets variables. Set kill = True to also kill MUGEN.
     def reset(self, kill = False):
-        if(kill):
+        if(kill and self.p != None):
             try:
                 os.kill(self.p.pid, signal.SIGTERM)
             except PermissionError:
                 self.debug("Tried to kill MUGEN, but it seems to be already dead.")
                 pass
-        # If mugen is not already running (in most cases it shouldn't be)
+        # If mugen is not already running (in most cases it shouldn't be), start it
         if (not self.are_you_still_there()):
             logpurged = False
             while not logpurged:
@@ -77,7 +80,12 @@ class MugenOperator():
                 except PermissionError: # Someone is still holding the file, give it a sec
                     sleep(1)
                     pass
+            self.index = 0
             os.startfile(PROCESS_NAME)  # Start MUGEN
+        else:   # MUGEN is running, set current index to end of current logfile
+            f = open(logfile)
+            self.index = len(f.readlines()-1)
+            f.close()
         processloaded = False
         while not processloaded:
             try:
@@ -89,7 +97,7 @@ class MugenOperator():
                 sleep(2)
         self.win1_ptr = self.p.get_pointer(WIN_ADDRESS, [0x0000871C])
         self.win2_ptr = self.p.get_pointer(WIN_ADDRESS, [0x00008728])
-        self.index = 0
+
         self.loadingchar = 2
         self.player1_cursor = [0,0]
         self.player2_cursor = [1,0]
@@ -105,7 +113,9 @@ class MugenOperator():
     
     # Return state of MUGEN
     def get_state(self):
-        return self.state
+        if(are_you_still_there()):
+            return self.state
+        return DEAD_STATE
     
     # Add a character to a list, returns True if success
     def add_character(self, charnum, pl):
@@ -139,9 +149,11 @@ class MugenOperator():
         p1wins = int(self.p.read(self.p.get_pointer(WIN_ADDRESS, [0x0000871C])))
         p2wins = int(self.p.read(self.p.get_pointer(WIN_ADDRESS, [0x00008728])))
         self.debug("Match status: "+str(p1wins)+" - "+str(p2wins))
-        if(p1wins == ROUNDS):
+        if(p1wins == ROUNDS and p2wins == ROUNDS):  # Draw, not sure if this actually can happen in mugen
+            self.winner = 0
+        elif(p1wins == ROUNDS):                     # Player 1 wins
             self.winner = PLAYER1
-        if(p2wins == ROUNDS):
+        elif(p2wins == ROUNDS):                     # Player 2 wins
             self.winner = PLAYER2
 
 
@@ -212,10 +224,9 @@ class MugenOperator():
                     self.debug("UNHANDLED FAILURE TO LOAD")
                     self.debug(line)
                     self.winner = 0
-                    
-                # Kill mugen (if it is still alive showing error message)
-                print("MUGEN failed, restarting it!")
-                self.reset(True) # reset everything
+                
+                # Mugen is dead, set state as such
+                self.state = DEAD_STATE
                 return
 
     def debug(self, msg):
@@ -383,8 +394,8 @@ class MugenOperator():
         ret = self.winner
         self.winner = -1
         return ret
-        
-# FOR DEBUG PURPOSES, REMOVE ANYTHING BELOW THIS COMMENT BEFORE ACTUAL USE
+'''        
+# FOR DEBUG PURPOSES, KEEP COMMENTED FOR ACTUAL USE
 def main():
     operator = MugenOperator()
     p1 = [23,176,37,555]
@@ -425,3 +436,4 @@ def main():
         
 if __name__ == "__main__":
     main()
+'''
