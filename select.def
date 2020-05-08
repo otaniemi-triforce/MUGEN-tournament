@@ -1,0 +1,2577 @@
+;---------------------------------------------------------------------
+[Characters]
+ ;How to add characters
+ ;---------------------
+ ;Use the format:
+ ;    charname, stagefilename
+ ;
+ ;eg. For a player with filename "kfm", 
+ ;    and stage filename "stages/mybg.def"
+ ;type (without the semicolon):
+ ;    kfm, stages/mybg.def
+ ;
+ ;If you want to load a different def file, you can enter it
+ ;as a directory plus the def file. This example loads up
+ ;chars/kfm/alt-kfm.def:
+ ;    kfm/alt-kfm.def, stages/mybg.def
+ ;
+ ;If you put "random" as the stagefilename, then a random stage will
+ ;be selected for that player. eg.
+ ;    kfm, random
+ ;
+ ;Optional parameters may follow on the same line, separated
+ ;by commas. Each parameter has the form:
+ ;    paramname = paramvalue
+ ;where paramname is the name of the parameter type, and
+ ;paramvalue is the value to assign that parameter.
+ ;The optional parameters are:
+ ;
+ ; - music
+ ;   Set the paramvalue to the name of the music file to use
+ ;   as the BGM for that character. This overrides the bgmusic
+ ;   parameter in the stage's .def file, so you can re-use the
+ ;   same stage for multiple characters, but have a different
+ ;   BGM playing for each person.
+ ;
+ ; - includestage
+ ;   Set the paramvalue to 0 to avoid including this stage
+ ;   in the stage select list (in VS, training modes, etc)
+ ;
+ ; - order
+ ;   Set the paramvalue to the ordering priority to give the
+ ;   character. Valid values are from 1 to 10. A smaller value
+ ;   means you will fight the character sooner. You will never
+ ;   fight an order 2 character before an order 1 character,
+ ;   and never an order 3 character before an order 2 one.
+ ;   For example, you might want to set your boss character
+ ;   to have order=3. The default order value is 1 if you omit
+ ;   this param. See *.maxmatches under [Options] for how to
+ ;   limit the number of matches per order priority.
+ ;
+ ;   Some examples:
+ ;        kfm, stages/mybg.def, includestage=0
+ ;        kfm, stages/mybg.def, music=sound/song.mp3
+ ;        kfm, stages/mybg.def, music=sound/song.mp3, includestage=0
+ ;        kfm, stages/mybg.def, order=3
+ ;
+ ;You can also add a randomize icon to the select screen. To do
+ ;this, put the word "randomselect" on a line of its own, with no
+ ;extra parameters.
+ ;
+ ;Insert your characters below.
+
+randomselect
+randomselect
+;
+
+; ANIME2				ANIME2				ANIME2				ANIME2
+Anime2/Alyssa/Alyssa
+Anime2/anime-tencho/anime-tencho
+Anime2/konachan/konachan
+Anime2/Lelouch/Lelouch
+Anime2/Nanoha/Nanoha
+Anime2/signum/signum
+Anime2/Vita/Vita
+Anime2/y_kagami/y_kagami
+Anime2/aka/aka
+Anime2/Akane_Higurashi/Akane_Higurashi
+Anime2/Alyssa_Searrs/Alyssa_Searrs
+Anime2/A_minagi/A_minagi
+Anime2/E_nagamori/E_nagamori
+Anime2/G_Nayu/G_Nayu
+Anime2/Himeido/Himeido
+Anime2/HS_Akane/HS_Akane
+Anime2/kaname/kaname
+; BLANK HERE, 2 randomselect + 17 chars before this
+empty
+empty
+empty
+empty
+; 18 characters after this, then another 4 blanks
+Anime2/Mai_Tokiha/Mai_Tokiha
+;Anime2/meinyan/meinyan
+Anime2/midori/midori
+Anime2/mint/mint
+Anime2/miyabi/miyabi
+Anime2/ryuujin/ryuujin
+Anime2/Sakuya_Amakawa/Sakuya_Amakawa
+;Anime2/sukunyan/sukunyan
+;
+
+;MB				MB				MB				MB
+MB/J_miyako/J_miyako.def
+MB/Len.AA[9]/Len.AA[9].def
+MB/Roa_AA/Roa_AA.def
+MB/S_Akiha_AACC/S_Akiha_AACC.def
+MB/ShikiNanaya.AC[9]/ShikiNanaya.AC[9].def
+MB/ciel/ciel.def
+MB/hisui&kohaku/hisui&kohaku.def
+;
+;Melty				Melty				Melty
+Melty/7th Heaven Ciel/7th Heaven Ciel
+Melty/akaitsuki/akaitsuki
+Melty/akiha/akiha
+Melty/chaos2/chaos2
+Melty/CIEL/CIEL
+Melty/Dark Arcueid/Dark Arcueid
+Melty/Hisui/Hisui
+;BLANK Here
+empty
+empty
+empty
+empty
+;Melty/shiki 2/shiki 2
+Melty/emiya/emiya
+Melty/G-akiha/G-akiha
+Melty/Kohaku/Kohaku
+Melty/len/len
+Melty/len 2/len 2
+Melty/Mech Hisui/Mech Hisui
+Melty/mech hisui ii/mech hisui ii
+Melty/miyako/miyako
+Melty/Nanaya/Nanaya
+Melty/Nanaya Shiki/Nanaya Shiki
+Melty/neco-arc/neco-arc
+Melty/neco-arc_chaos/neco-arc_chaos
+Melty/NecoArc/NecoArc
+Melty/Red Arcueid/Red Arcueid
+;Melty/Shiki/Shiki
+Melty/shiki tohno/shiki tohno
+
+
+;0 Original			0 Original			0 Original
+0/0Captcave_90/0Captcave_90.def, random
+0/0FatAlbert_93/0FatAlbert_93.def, random
+0/0Marvin/0Marvin.def, random
+0/0Marvin_98/0Marvin_98.def, random
+0/0Popeye_W94/0Popeye_W94.def, random
+0/0Popeye_W98/0Popeye_W98.def, random
+0/0senti/0senti.def, random
+
+
+;Arcana Heart			Arcana Heart			Arcana Heart
+Arcana/AC3-Weiss/AC3-Weiss, random
+Arcana/AkaneInuwaka/AkaneInuwaka, random
+;
+;0D 			0D			 0D 			0D
+0D/0DPatchouli_Knowledge/0DPatchouli_Knowledge, random
+0D/0D_Abobo/0D_Abobo, random
+0D/0D_Billy/0D_Billy, random
+;0D/0D_Captain_Atlantis/0D_Captain_Atlantis, random
+0D/0D_Iyo/0D_Iyo, random
+0D/0D_Kamui/0D_Kamui, random
+0D/0D_Kyosuke_Shigure/0D_Kyosuke_Shigure, random
+0D/0D_Makai/0D_Makai, random
+0D/0D_Ohga/0D_Ohga, random
+0D/0D_RatKing/0D_RatKing, random
+0D/0D_Ray/0D_Ray, random
+0D/0D_Red_Dragon/0D_Red_Dragon, random
+0D/0D_Roy_Wilson/0D_Roy_Wilson, random
+0D/0D_Sasuke/0D_Sasuke, random
+0D/0D_Sho/0D_Sho, random
+0D/0D_Terry_Rogers/0D_Terry_Rogers, random
+0D/0D_Tyssa/0D_Tyssa, random
+;0D/0D_Voltz/0D_Voltz, random
+0D/0D_Yuki/0D_Yuki, random
+0D/0D_Zeldia2/0D_Zeldia2, random
+;
+;OH GOD ANIME_JAPAN			OH GOD ANIME_JAPAN			OH GOD ANIME_JAPAN
+Anime_japan/A-ko-OGGY/A-ko-OGGY, random
+Anime_japan/ab-ranma/ab-ranma, random
+Anime_japan/astroboy/astroboy, random
+Anime_japan/Beelzebub/Beelzebub, random
+Anime_japan/blackranger/blackranger, random
+Anime_japan/Chibi Naruto/Chibi Naruto, random
+Anime_japan/Dark Schneider/Dark Schneider, random
+Anime_japan/Dark Schneider1/Dark Schneider1, random
+;Anime_japan/doraemon/doraemon, random
+Anime_japan/godzilla/godzilla, random
+Anime_japan/godzilla2/godzilla2, random
+Anime_japan/HIEI/HIEI, random
+Anime_japan/Ichigo_Kurosaki/Ichigo_Kurosaki, random
+Anime_japan/InuYasha/InuYasha, random
+Anime_japan/kenshin4/kenshin4, random
+Anime_japan/KENSHIRO/KENSHIRO, random
+Anime_japan/KENSHIROU/KENSHIROU, random
+Anime_japan/Lord Zedd/Lord Zedd, random
+Anime_japan/nagato/nagato, random
+Anime_japan/naruto-kun/naruto-kun, random
+Anime_japan/Naruto_COSPLAY/Naruto_COSPLAY, random
+Anime_japan/nausicaa/nausicaa, random
+Anime_japan/Pikachu/Pikachu, random
+Anime_japan/PrincessPeach-eqBETA2a/eq-PrincessPeach, random
+Anime_japan/ranma/ranma, random
+Anime_japan/Ranma Saotome/Ranma Saotome, random
+Anime_japan/ranma2/ranma2, random
+Anime_japan/SHISHIO/SHISHIO, random
+Anime_japan/ultimate_guyver/ultimate_guyver, random
+
+;
+
+;BH				BH				BH				BH
+BH/ananzi/ananzi.def, stages/muro-eng.def, order=4
+BH/animus/animus.def, stages/prision-eng.def, order=4
+BH/final/final.def, stages/caos.def, order=7
+BH/hashi/hashi.def, stages/arbol-eng.def, order=4
+BH/noroko/noroko.def, stages/desvan-eng.def, order=4
+BH/peketo/peketo.def, stages/hospital-eng.def, order=4
+BH/shar-makai/shar-makai.def, stages/desierto-eng.def, order=4
+;
+;CAPCOM          CAPCOM          CAPCOM         CAPCOM
+;;Capcom/0D_Blanka/0D_Blanka
+Capcom/0D_demi/0D_demi
+Capcom/akuma/akuma
+Capcom/Akuma SF3/Akuma SF3
+;;Capcom/akuma2/akuma2
+Capcom/AkumaDM/AkumaDM
+;;Capcom/amingo/amingo
+;;Capcom/Amingo SxP/Amingo SxP
+;;Capcom/AngelRyu/AngelRyu
+;;Capcom/Ath-Chunli/Ath-Chunli
+Capcom/BabyCommando/BabyCommando
+Capcom/batsu/batsu
+Capcom/bbh/bbh
+;;Capcom/bison/bison
+Capcom/brocken/brocken
+Capcom/cammy/cammy
+;;Capcom/cammy1/cammy1
+Capcom/cammy2/cammy2
+;;Capcom/CammyCustom/CammyCustom
+;;Capcom/cammy_nxc/cammy_nxc
+Capcom/capcom/capcom
+Capcom/CFJ_Hakan/CFJ_Hakan
+;;Capcom/Chaos Hiryu/Chaos Hiryu
+Capcom/chillPenguin/chillPenguin
+;;Capcom/cHiryu/cHiryu
+;;Capcom/Chun-Li DX/Chun-Li DX
+Capcom/chunli/chunli
+;;Capcom/chunli2/chunli2
+Capcom/cody/cody
+Capcom/Cutman/Cutman
+Capcom/cvs2_anakaris/cvs2_anakaris
+Capcom/cvs2_dhalsim/cvs2_dhalsim
+Capcom/cvs2_guile/cvs2_guile
+Capcom/cvs2_mukuro/cvs2_mukuro
+Capcom/cvs2_rolento/cvs2_rolento
+Capcom/cvs2_sagat/cvs2_sagat
+Capcom/cvsbison/cvsbison
+Capcom/cvseagle/cvseagle
+Capcom/cvsgouki/cvsgouki
+Capcom/cvsken/cvsken
+Capcom/cvsryu/cvsryu
+Capcom/CvWHaggar/CvWHaggar
+Capcom/CvWMrX/CvWMrX
+Capcom/cyberdan/cyberdan
+Capcom/Dan/Dan
+Capcom/dante/dante
+Capcom/Dan_Violent/Dan_Violent
+;;Capcom/Dark Sakura DX/Dark Sakura DX
+;;Capcom/Dark-Karin/Dark-Karin
+;;Capcom/DCHUNLI/DCHUNLI
+;;Capcom/DeadGodVega/God_Vega
+Capcom/demetri/demetri
+;;Capcom/DemitriMaximoff[AngelMyst&JinKazama]/DemitriMaximoff[AngelMyst&JinKazama]
+Capcom/demonhayato/demonhayato
+;;Capcom/DestructoRyu/DestructoRyu
+Capcom/dhalsim/dhalsim
+Capcom/Dhalsim2/Dhalsim2
+Capcom/donovan1/donovan1
+Capcom/dudley/dudley
+Capcom/Eagle/Eagle
+Capcom/evil guile/evil guile
+Capcom/evil ryo/evil ryo
+Capcom/EvilDan/EvilDan
+;;Capcom/evilken/evilken
+Capcom/evilken2/evilken2
+;;Capcom/evilryu/evilryu
+Capcom/evilryu2/evilryu2
+Capcom/fei-long/fei-long
+Capcom/Felicia/Felicia
+;;Capcom/felicia1/felicia1
+Capcom/Felicia2/Felicia2
+;;Capcom/Felicia_LG/Felicia_LG
+Capcom/God Ken/God Ken
+Capcom/Gouken_SSF4/Gouken_SSF4
+;;Capcom/guile/guile
+;;Capcom/guile 2/guile 2
+;;Capcom/guile 3/guile 3
+Capcom/Guy/Guy
+;;Capcom/Haggar/Haggar
+;;Capcom/Haggar1/Haggar1
+Capcom/hauzer/hauzer
+;;Capcom/HAYATO/HAYATO
+;;Capcom/hayato2/hayato2
+Capcom/hayato_mc2/hayato_mc2
+Capcom/hiryu/hiryu
+;;Capcom/holy ken/holy ken
+Capcom/Honda/Honda
+;;Capcom/Ihiryu/Ihiryu
+Capcom/insane hiryu/insane hiryu
+Capcom/IYCAMMY/IYCAMMY
+Capcom/jill/jill
+Capcom/jill2/jill2
+Capcom/JuriHan/JuriHan
+Capcom/Karin/Karin
+Capcom/ken/ken
+;;Capcom/ken 2/ken 2
+Capcom/k_eagle/k_eagle
+;;Capcom/LA_Ken/LA_Ken
+Capcom/Lei-Lei/Lei-Lei
+Capcom/LeoFM/LeoFM
+;;Capcom/Leonbor2/Leonbor2
+Capcom/lilith/lilith
+Capcom/lilith 2/lilith 2
+Capcom/m bison svc/m bison svc
+Capcom/Maki/Maki
+;;Capcom/Maki1/Maki1
+Capcom/makoto/makoto
+Capcom/Master Fei-long/Master Fei-long
+;;Capcom/master ken/master ken
+Capcom/master ryo/master ryo
+;;Capcom/Master Ryu/Master Ryu
+;;Capcom/mbison/mbison
+Capcom/mbison2/mbison2
+Capcom/mbison3/mbison3
+Capcom/mech zangief/mech zangief
+Capcom/mech_sagat/mech_sagat
+Capcom/Megaman/Megaman
+;;Capcom/MEGAMAN Plus/MEGAMAN Plus
+;;Capcom/megaman1/megaman1
+Capcom/MegaManEXE/MegaManEXE
+Capcom/megamanx/megamanx
+Capcom/Morrigan/Morrigan
+Capcom/MvC-EoH_Roll_DCL/MvC-EoH_Roll_DCL
+Capcom/Nash/Nash
+Capcom/RedDragon/RedDragon
+Capcom/riot ryu/riot ryu
+Capcom/RMM_Airman/RMM_Airman
+Capcom/Roll/Roll
+Capcom/RubyHeart/RubyHeart
+Capcom/ryu/ryu
+Capcom/ryu 3/ryu 3
+;;Capcom/ryu 4/ryu 4
+;;Capcom/Ryu SF3/Ryu SF3
+;;Capcom/Ryu-Akuma/Ryu-Akuma
+;;Capcom/ryu2/ryu2
+Capcom/ryuDG/ryuDG
+;;Capcom/ryulee/ryulee
+;;Capcom/ryuplus-ms/ryuplus-ms
+Capcom/Sagat/Sagat
+;;Capcom/Sagat 2/Sagat 2
+;;Capcom/Sagat Boss/Sagat Boss
+;;Capcom/Sagat DX/Sagat DX
+Capcom/Sakura/Sakura
+;;Capcom/Sakura 2/Sakura 2
+Capcom/sakura 3/sakura 3
+;;Capcom/Sakura DX/Sakura DX
+Capcom/sakura_C/sakura_C
+;;Capcom/Sakura_COSPLAY/Sakura_COSPLAY
+Capcom/sean/sean
+;;Capcom/sean2/sean2
+;;Capcom/sf2bricks/sf2bricks
+Capcom/sf3Hugo/sf3Hugo
+Capcom/sf3_chun-li/sf3_chun-li
+Capcom/sf3_ken/sf3_ken
+;; Capcom/shin akuma/shin akuma
+;;Capcom/shinbison/shinbison
+Capcom/ShinGouki/ShinGouki
+Capcom/sonson/sonson
+;; Capcom/soul akuma/soul akuma
+Capcom/so_andore/so_andore
+Capcom/so_blaze/so_blaze
+Capcom/so_dark/so_dark
+Capcom/so_mb02/so_mb02
+Capcom/so_psycho/so_psycho
+Capcom/so_sean/so_sean
+Capcom/so_sevil/so_sevil
+Capcom/so_sonic/so_sonic
+Capcom/SSF4_Viper_3D/SSF4_Viper_3D
+Capcom/Strider Hiryu/Strider Hiryu
+Capcom/t hawk/t hawk
+Capcom/T.Hawk_MvC/T.Hawk_MvC
+Capcom/TronBonne/TronBonne
+;;Capcom/V-Ken/V-Ken
+Capcom/Vega/Vega
+Capcom/violent ken/violent ken
+;;Capcom/vken/vken
+Capcom/Wild Ken/Wild Ken
+Capcom/xjill/xjill
+;;Capcom/zangief/zangief
+Capcom/zangief2/zangief2
+;;Capcom/Zangief[Fido]/Zangief[Fido]
+Capcom/zero/zero
+Capcom/zero2/zero2
+;
+;CORONA THE DRAGON MAIDEN
+Corona the Dragon Maiden/ai/ai
+Corona the Dragon Maiden/akane/akane
+Corona the Dragon Maiden/akashima/akashima
+Corona the Dragon Maiden/anastasia/anastasia
+Corona the Dragon Maiden/asuka/asuka
+Corona the Dragon Maiden/coolseven/coolseven
+Corona the Dragon Maiden/corona/corona
+Corona the Dragon Maiden/kaname/kaname
+Corona the Dragon Maiden/kirara/kirara
+Corona the Dragon Maiden/koiboshi/koiboshi
+Corona the Dragon Maiden/kumi/kumi
+Corona the Dragon Maiden/maino/maino
+Corona the Dragon Maiden/nayuta/nayuta
+Corona the Dragon Maiden/negazero/negazero
+Corona the Dragon Maiden/rei/rei
+Corona the Dragon Maiden/rumine/rumine
+Corona the Dragon Maiden/touka/touka
+Corona the Dragon Maiden/tsukuyo/tsukuyo
+Corona the Dragon Maiden/youko/youko
+Corona the Dragon Maiden/yumina/yumina
+;
+;Capcom vs. SNK				Capcom vs. SNK				 Capcom vs. SNK
+CvS/CvS2AKyo/CvS2AKyo
+CvS/CvS2Joe/CvS2Joe
+CvS/cvsaprile/cvsaprile
+CvS/cvsdan/cvsdan
+CvS/cvsEnero/cvsEnero
+CvS/cvsFevrier/cvsFevrier
+CvS/cvsgeese/cvsgeese
+CvS/cvsjill/cvsjill
+CvS/cvskyo/cvskyo
+CvS/cvsMarz/cvsMarz
+CvS/cvsNoembelu/cvsNoembelu
+CvS/cvsrock/cvsrock
+CvS/cvsrugal/cvsrugal
+CvS/cvsSantum/cvsSantum
+CvS/cvsSatuki/cvsSatuki
+CvS/cvsterry/cvsterry
+CvS/cvsvega/cvsvega
+CvS/cvsvice/cvsvice
+CvS/cvsXiayu/cvsXiayu
+CvS/cvsYanyu/cvsYanyu
+CvS/CvS_DevilJinTAG/CvS_DevilJinTAG
+CvS/CvS_Heihachi/CvS_Heihachi
+CvS/cvs_iori/cvs_iori
+CvS/CvS_Kazuya/CvS_Kazuya
+CvS/CvS_KazuyaTAG/CvS_KazuyaTAG
+CvS/CvS_LawTAG/CvS_LawTAG
+CvS/CvS_Ogre/CvS_Ogre
+CvS/CvS_PaulTAG/CvS_PaulTAG
+CvS/CVS_R. Mika/CVS_R. Mika
+;
+;
+CvXX/CvtWCactuar/CvtWCactuar
+CvXX/CvTWJin/CvTWJin
+CvXX/CvTWPunisher/CvTWPunisher
+CvXX/CvTWShinobi/CvTWShinobi
+CvXX/CvTWSonic/CvTWSonic
+;
+;DDR				DDR 				DDR				DDR
+;DDR/0Captcave_100_Derrick_Rowell/0Captcave_100_Derrick_Rowell.def
+;DDR/0DDodgers_100_Derrick_Rowell/0DDodgers_100_Derrick_Rowell.def
+;DDR/0Destroyus_99_Derrick_Rowell/0Destroyus_99_Derrick_Rowell.def
+;DDR/0Elmer_DDR_99_9/0Elmer_DDR_99_9.def
+;DDR/0FatAlbert_100_Derrick_Rowell/0FatAlbert_100_Derrick_Rowell.def
+;DDR/0MomaSusta_99_Derrick_Rowell/0MomaSusta_99_Derrick_Rowell.def
+;DDR/0Popeye_100_Derrick_Rowell/0Popeye_100_Derrick_Rowell.def
+;DDR/Marvin/Marvin.def
+;DDR/Mickey_ddrcreations_98/Mickey_ddrcreations_98.def
+;
+;DC Universe 			DC Universe			 DC Universe
+DC/Aquaman/Aquaman			
+DC/Batgirl/Batgirl
+;DC/Batman Beyond/Batman Beyond
+DC/HarleyQuinn/HarleyQuinn
+DC/InfinityBatman/InfinityBatman
+DC/JokerGang/JokerGang
+DC/Luthor/Luthor
+DC/newbatman/newbatman
+DC/robin/robin
+DC/ROBINDCvM/ROBINDCvM
+DC/Scarecrow/Scarecrow
+DC/superman01/superman01
+DC/Superman52/Superman52
+DC/TheJoker/TheJoker
+;
+;DC2				DC2				DC2
+DC2/Atom/Atom.def
+DC2/Batman/Batman.def
+DC2/BlueBeetle/BlueBeetle.def
+DC2/Cyborg/Cyborg.def
+DC2/GLHal/GLHal.def
+DC2/Ice/Ice.def
+DC2/James Gordon/James Gordon.def
+DC2/LadyPhantom/LadyPhantom.def
+DC2/Luthor/Luthor.def
+DC2/MvC_Deathstroke/MvC_Deathstroke.def
+DC2/ROBINLOTDK/ROBINLOTDK.def
+DC2/Rorschach/Rorschach.def
+DC2/Shazam/Shazam.def
+DC2/Starfire/Starfire.def
+DC2/Superman/Superman.def
+DC2/WallyWest/WallyWest.def
+DC2/catwoman/catwoman.def
+DC2/joker/joker.def
+DC2/supergirl/supergirl.def
+DC2/wonder_woman/wonder_woman.def
+;
+;DLC1				DLC1			DLC1
+DLC1/Byrne/Byrne.def, randomselect
+DLC1/Aoko_M/Aoko_M.def, randomselect
+DLC1/millia rage/millia rage.def, randomselect
+DLC1/Risty/Risty.def, stages/LvsR.def
+DLC1/SAGAWA/SAGAWA.def, stages/kouen.def
+DLC1/SilverJ/SilverJ.def, stages/POXORCASTLE.def
+;
+;DLC2				DLC2			DLC2
+DLC2/Jafar/Jafar.def, stages/JAFARSFORTRESS.def
+DLC2/Wyldestar/Wyldestar.def
+DLC2/cirno/cirno.def, stages/TH10.5_Youkai_no_yama.def
+DLC2/rumia/rumia.def, stages/TH10.5_Youkai_no_yama.def
+DLC2/zen/zen.def, randomselect, order=2
+;
+;EFZ				EFZ				EFZ
+EFZ/Akiko Minase/Akiko Minase.def
+EFZ/Ikumi/Ikumi.def
+EFZ/MakoP/MakoP.def
+EFZ/Nanase-MVC/Nanase-MVC.def
+EFZ/Unknown/Unknown.def
+EFZ/ayu_s/ayu_s.def
+;
+;Games			Games			Games			Games
+Games/+Predalien+/+Predalien+
+Games/aeris/aeris
+Games/Alucard/Alucard
+Games/Amy/Amy
+Games/AmyRose/AmyRose
+Games/bomberman/bomberman
+Games/bowser/bowser
+Games/Chaos/Chaos
+Games/chomp/chomp
+Games/Cloud/Cloud
+Games/DonkeyKong/DonkeyKong
+Games/DuckHunt/DuckHunt
+Games/Emerl/Emerl
+Games/ff5_omega/ff5_omega
+Games/ff_miyuki/ff_miyuki
+Games/GoldenAxe/GoldenAxe
+Games/hayabusa/hayabusa
+;Games/Knuckles/Knuckles
+Games/KOS-MOS/KOS-MOS
+Games/Master Chief/Master Chief
+Games/metroid/metroid
+;Games/Robotnik/Robotnik
+Games/RyuHayabushaNES/RyuHayabushaNES
+Games/samus metroid/samus metroid
+Games/Samus-beta/Samus-beta
+;Games/sigma/sigma
+Games/SimonBelmont/SimonBelmont
+Games/sonic/sonic
+Games/SonicMH/SonicMH
+;Games/Super Sonic/Super Sonic
+Games/SuperMario/SuperMario
+Games/SuperMario0/SuperMario0
+Games/tails/tails
+Games/Tifa Lockhart/Tifa Lockhart
+Games/wario1/wario1
+Games/wario2/wario2
+Games/wingzero/wingzero
+Games/yoshi3rev/yoshi3rev
+;
+;GAMES2
+Games2/Chris_Vs/Chris_Vs
+Games2/Gwinbee/Gwinbee
+Games2/Leon/Leon
+Games2/Twinbee/Twinbee
+Games2/Winbee/Winbee
+;
+;
+GG/eddie/eddie.def
+GG/fau/fau.def
+GG/justice/justice.def
+GG/may_xx/may_xx.def
+GG/pot/pot.def
+GG/sol_b/sol_b.def
+;
+;Guilty Gear			Guilty Gear				Guilty Gear
+GuiltyGear/Axel/Axel
+GuiltyGear/AXL/AXL
+GuiltyGear/AXL_GGXX/AXL_GGXX
+GuiltyGear/baiken/baiken
+GuiltyGear/baiken_SLASH/baiken_SLASH
+GuiltyGear/bridget/bridget
+GuiltyGear/bridget2/bridget2
+GuiltyGear/chipp/chipp
+GuiltyGear/chipp_ggx/chipp_ggx
+GuiltyGear/dizzy/dizzy
+GuiltyGear/dizzy-el/dizzy-el
+GuiltyGear/dizzy2/dizzy2
+;GuiltyGear/God Sol/God Sol
+GuiltyGear/i-no/i-no
+GuiltyGear/I-NO(GGXXR)/I-NO(GGXXR)
+GuiltyGear/iggy/iggy
+GuiltyGear/ino_COSPLAY/ino_COSPLAY
+GuiltyGear/ky/ky
+GuiltyGear/Ky1/Ky1
+GuiltyGear/KY_GGX/KY_GGX
+GuiltyGear/MAY_X/MAY_X
+GuiltyGear/may_xx/may_xx
+GuiltyGear/millia/millia
+GuiltyGear/order sol/order sol
+GuiltyGear/potemkin/potemkin
+GuiltyGear/robo ky/robo ky
+GuiltyGear/robo ky ii/robo ky ii
+GuiltyGear/roboky_xx/roboky_xx
+GuiltyGear/ROBO_KY/ROBO_KY
+GuiltyGear/ROBO_KYII/ROBO_KYII
+GuiltyGear/ShinEddie/ShinEddie
+GuiltyGear/sol2/sol2
+GuiltyGear/SolBadguy/SolBadguy
+GuiltyGear/Super Dizzy/Super Dizzy
+GuiltyGear/super sol/super sol
+GuiltyGear/venom_ggxx/venom_ggxx
+GuiltyGear/zappa/zappa
+GuiltyGear/zappa2/zappa2
+;
+;JoJo				JoJo				JoJo				JoJo
+JoJo/dio/dio		
+JoJo/dio1/dio1      
+JoJo/diofix/diofix    
+JoJo/jojo/jojo      
+JoJo/joseph2/joseph2   
+JoJo/joseph_j/joseph_j  
+JoJo/jotaro/jotaro    
+JoJo/jotaroanmc/jotaroanmc
+JoJo/NEODIO/NEODIO    
+JoJo/sdio/sdio      
+JoJo/shadow dio/shadow dio
+;
+;MARVEL				MARVEL				MARVEL				MARVEL
+MARVEL/Archangel/Archangel.def
+MARVEL/Bishop/Bishop.def
+MARVEL/CaptainAmerica/CaptainAmerica.def
+MARVEL/DeadPoolx/DeadPoolx.def
+MARVEL/Havok/Havok.def
+MARVEL/IncredibleHulk/IncredibleHulk.def
+MARVEL/InvisibleWoman/InvisibleWoman.def
+MARVEL/Juggernaut/Juggernaut.def
+MARVEL/MVC2_WarMachine/MVC2_WarMachine.def
+MARVEL/Magneto/Magneto.def
+MARVEL/MsMarvel/MsMarvel.def
+MARVEL/MvC-EoH_DrDoom_DCL/MvC-EoH_DrDoom_DCL.def
+MARVEL/Nick Fury/Nick Fury.def
+MARVEL/Psylocke/Psylocke.def
+MARVEL/Pyro/Pyro.def
+MARVEL/SabreTooth/SabreTooth.def
+MARVEL/Spiderman/Spiderman.def
+MARVEL/StrongGuy/StrongGuy.def
+MARVEL/VonStrucker/VonStrucker.def
+MARVEL/Wonder man/Wonder man.def
+;MARVEL/abyss/abyss.def
+MARVEL/blackheart/blackheart.def
+MARVEL/cyclops/cyclops.def
+MARVEL/iceman/iceman.def
+MARVEL/ironman/ironman.def
+MARVEL/onslaught/onslaught.def
+MARVEL/sentinel/sentinel.def
+MARVEL/silversam/silversam.def
+MARVEL/venom2/venom2.def
+MARVEL/wolverine/wolverine.def
+;
+;MarvelCapcom				MarvelCapcom				MarvelCapcom
+MarvelCapcom/abyss2/abyss2					
+MarvelCapcom/abyss3/abyss3
+MarvelCapcom/AntMan/AntMan
+MarvelCapcom/Balrog_MvC/Balrog_MvC
+MarvelCapcom/Beast_MvC/Beast_MvC
+MarvelCapcom/Black Cat/Black Cat
+MarvelCapcom/Black panther/Black panther
+MarvelCapcom/BlackCat/BlackCat
+MarvelCapcom/Blackheart/Blackheart
+MarvelCapcom/BlackWidow/BlackWidow
+MarvelCapcom/Blanka_MvC/Blanka_MvC
+MarvelCapcom/C.Akuma_MVC/C.Akuma_MVC
+MarvelCapcom/Cable/Cable
+MarvelCapcom/CapAmerica/CapAmerica
+MarvelCapcom/Captain America MVC2/Captain America MVC2
+MarvelCapcom/CaptainMarvel/CaptainMarvel
+MarvelCapcom/Catherine-MVC/Catherine-MVC
+MarvelCapcom/Colossus/Colossus
+MarvelCapcom/colossusEX/colossusEX
+MarvelCapcom/CVGRonan/CVGRonan
+MarvelCapcom/CVG_Flash/CVG_Flash
+MarvelCapcom/CVG_Omega_Red/CVG_Omega_Red
+MarvelCapcom/CVG_Spawn/CVG_Spawn
+MarvelCapcom/Cyclops/Cyclops
+MarvelCapcom/Deadpool/Deadpool
+MarvelCapcom/doom/doom
+MarvelCapcom/DrDoom/DrDoom
+MarvelCapcom/drdoom1/drdoom1
+MarvelCapcom/Emma Frost/Emma Frost
+MarvelCapcom/Gambit/Gambit
+MarvelCapcom/Ghost Rider/Ghost Rider
+MarvelCapcom/GhostRider/GhostRider
+MarvelCapcom/GoldWarmachine/GoldWarmachine
+MarvelCapcom/GreenGoblin/GreenGoblin
+MarvelCapcom/Hawkman/Hawkman
+MarvelCapcom/hulk/hulk
+MarvelCapcom/hulk2/hulk2
+MarvelCapcom/Hulk2099/Hulk2099
+MarvelCapcom/Hulk_mvc/Hulk_mvc
+MarvelCapcom/InvisibleWomanCvg/InvisibleWomanCvg
+MarvelCapcom/Ironman/Ironman
+MarvelCapcom/jin_mvc/jin_mvc
+MarvelCapcom/JUBILEE/JUBILEE
+MarvelCapcom/Jubilee v2/Jubilee
+MarvelCapcom/Jubilee1/Jubilee1
+MarvelCapcom/kingpin/kingpin
+MarvelCapcom/magneto2/magneto2
+MarvelCapcom/Magneto_COTA/Magneto_COTA
+MarvelCapcom/Magneto_xvsf/Magneto_xvsf
+MarvelCapcom/Marvel_Juggernaut/Marvel_Juggernaut
+MarvelCapcom/Marvel_Marrow/Marvel_Marrow
+MarvelCapcom/Marvel_OmegaRed/Marvel_OmegaRed
+MarvelCapcom/marvel_spiderman/marvel_spiderman
+MarvelCapcom/MissMarvel/MissMarvel
+MarvelCapcom/morrigan_mvc/morrigan_mvc
+MarvelCapcom/MrFantastic/MrFantastic
+MarvelCapcom/mvc2felicia/mvc2felicia
+MarvelCapcom/MVC2_CaptainAmerica/MVC2_CaptainAmerica
+MarvelCapcom/MVC2_Donovan/MVC2_Donovan
+MarvelCapcom/MVC2_Ibuki/MVC2_Ibuki
+MarvelCapcom/MvC2_MrFantastic/MvC2_MrFantastic
+MarvelCapcom/MVC2_TronBonne/MVC2_TronBonne
+MarvelCapcom/mvc_batsu/mvc_batsu
+MarvelCapcom/MvC_Raven/MvC_Raven
+MarvelCapcom/Mystique/Mystique
+MarvelCapcom/onslaught1stForm/onslaught1stForm
+MarvelCapcom/onslaught2/onslaught2
+MarvelCapcom/Poison Ivy/Poison Ivy
+MarvelCapcom/ProfessorX/ProfessorX
+MarvelCapcom/Psylocke/Psylocke
+MarvelCapcom/Psylocke2/Psylocke2
+MarvelCapcom/Quicksilver/Quicksilver
+MarvelCapcom/RedHulk/RedHulk
+MarvelCapcom/Rogue/Rogue
+MarvelCapcom/Rogue 2/Rogue 2
+MarvelCapcom/RogueSp/RogueSp
+MarvelCapcom/Rose_mvc/Rose_mvc
+MarvelCapcom/sabretooth/sabretooth
+MarvelCapcom/sakura_mvc/sakura_mvc
+MarvelCapcom/Sentinel/Sentinel
+MarvelCapcom/SentinelX/sentinel
+MarvelCapcom/she-hulk/she-hulk
+MarvelCapcom/silver samurai/silver samurai
+MarvelCapcom/Silver surfer/Silver surfer
+MarvelCapcom/silversamurai/silversamurai
+MarvelCapcom/spiderman 2/spiderman 2
+MarvelCapcom/Spiderman 2099/Spiderman 2099
+MarvelCapcom/STORM/STORM
+MarvelCapcom/Storm2/Storm2
+MarvelCapcom/StormEX--Ichigo/StormEX--Ichigo
+;MarvelCapcom/Storm_COTA/Storm_COTA
+MarvelCapcom/Symbiote Spider-Man/Symbiote Spider-Man
+MarvelCapcom/thor/thor
+MarvelCapcom/Venom/Venom
+MarvelCapcom/Venom_SW/Venom_SW
+MarvelCapcom/warmachine/warmachine
+MarvelCapcom/Warmachine_mvc/Warmachine_mvc
+MarvelCapcom/Wolvenom_EOH/Wolvenom_EOH
+;MarvelCapcom/Wolverine2/Wolverine2
+MarvelCapcom/XMVCHakX/XMVCHakX
+MarvelCapcom/XMVCLitchiX/XMVCLitchiX
+MarvelCapcom/XMVCMakotoX/XMVCMakotoX
+MarvelCapcom/XMVCMuX/XMVCMuX
+MarvelCapcom/XMVCPlaX/XMVCPlaX
+MarvelCapcom/XMVCRachelX/XMVCRachelX
+MarvelCapcom/xMvCWolverinex/xMvCWolverinex
+MarvelCapcom/[AVX]EmmaFrost/EmmaFrost
+MarvelCapcom/[AVX]Iceman/Iceman
+MarvelCapcom/[AVX]Ironman/Ironman
+MarvelCapcom/[AVX]MsMarvel/MsMarvel
+MarvelCapcom/[AVX]Namor/Namor
+MarvelCapcom/[AVX]ScarletWitch/ScarletWitch
+
+;
+;MK				MK				MK				MK
+MK/Mileena/Mileena
+MK/ChameleonMO/ChameleonMO.def, stages/THE_PIT.def
+MK/CvS_Liu_Kang/CvS_Liu_Kang.def, stages/THE_PIT.def
+MK/CvS_Reptile/CvS_Reptile.def, stages/THE_PIT.def
+MK/CvS_Shang_Tsung/CvS_Shang_Tsung.def, stages/THE_PIT.def
+MK/CvS_Shao_Kahn/CvS_Shao_Kahn.def, stages/karena.def
+MK/CvWScorpion/CvWScorpion.def, stages/THE_PIT.def
+MK/CvWSubZero/CvWSubZero.def, stages/THE_PIT.def
+MK/Jade/Jade.def, stages/deadpool.def
+MK/JohnnyCage/JohnnyCage.def, stages/M1.def
+MK/Kano/Kano.def, stages/deadpool.def
+MK/Kintaro/Kintaro.def, stages/goroslair.def
+MK/Kung_lao/Kung_lao.def, stages/livingforest.def
+MK/MK1_GORO/MK1_GORO.def, stages/goroslair.def
+MK/MK1_RAIN/MK1_RAIN.def, stages/THE_PIT.def
+MK/MKERMAC/MKERMAC.def, stages/THE_PIT.def
+MK/MortalKombat3_MOTARO/MortalKombat3_MOTARO.def, stages/goroslair.def, order=7
+MK/Noobsaibot64/Noobsaibot64.def, stages/THE_PIT.de
+MK/Reiko/Reiko.def, stages/THE_PIT.def
+MK/Smoke/Smoke.def, stages/THE_PIT.def
+MK/Sonya/Sonya.def, stages/M1.def
+MK/TremorMO/TremorMO.def, stages/THE_PIT.def
+MK/UM-Raiden/UM-Raiden.def, stages/livingforest.def
+MK/baraka/baraka.def, stages/deadpool.def
+;MK/frost/frost.def, stages/THE_PIT.def
+MK/jax_mk3/jax_mk3.def, stages/deadpool.def
+MK/kitana/kitana.def, stages/livingforest.def
+MK/mvc grandmaster/mvc grandmaster.def, stages/livingforest.def
+MK/sindel/sindel.def, stages/livingforest.def
+;
+;MortalKombat				MortalKombat				MortalKombat
+MortalKombat/chameleon/chameleon
+MortalKombat/elektra/elektra
+MortalKombat/Elektra 2.0/Elektra
+MortalKombat/elektra1/elektra1
+MortalKombat/jade/jade
+MortalKombat/jax/jax
+MortalKombat/jcage/jcage
+MortalKombat/Liu Kang/Liu Kang
+MortalKombat/liukang/liukang
+MortalKombat/MortalKombat1_GORO/ARCADE_Size
+MortalKombat/Reptile/Reptile
+MortalKombat/Scorp/Scorp
+MortalKombat/Scorpion/Scorpion
+MortalKombat/ShangTsung/ShangTsung
+MortalKombat/shaokahn/shaokahn
+MortalKombat/smoke/smoke
+MortalKombat/sonia/sonia
+MortalKombat/Sub-Zero/Sub-Zero
+MortalKombat/subzero/subzero
+MortalKombat/Subzero-ninja/SUBZERO-ninja
+;
+;
+New/A-Henric/A-Henric
+New/Adolf_Hitler/Adolf_Hitler
+New/AE86/AE86
+New/Akira Toriyama/Akira Toriyama
+New/alice/alice
+New/Alucard_rig/Alucard_rig
+New/amity/amity
+New/aruru/aruru
+New/Asuna/Asuna
+New/AV8/AV8
+New/AwakeningChrom/Chrom/Chrom.def
+New/billrizer/billrizer
+New/Boring_SonsakuHakufu/Boring_SonsakuHakufu
+New/bruce/bruce
+New/chuck/chuck
+New/chucky2/chucky2
+New/clippy/clippy
+New/Colonel Sanders/Colonel Sanders
+New/Colossal Titan/Colossal Titan
+New/Conan/Conan
+New/Conker_update/CONKER/CONKER.def
+New/cursor/cursor
+New/Custom_Experimental_BA_Wang_P/Custom_Experimental_BA_Wang_Pairon/Custom_Experimental_BA_Wang_Pairon.def
+New/CyberDemon/CyberDemon
+New/Death/Death
+New/death2/death.def
+New/doomguy/doomguy
+New/dracula10/dracula10
+New/Draculawin/Draculawin
+New/duke/duke
+;New/DukeNukem/DukeNukem
+New/D_Mio/D_Mio
+New/Flippy-A2/Flippy-A2
+New/fm/fm
+New/g64Megaroman/g64Megaroman
+;New/g64MonkeyD.Christ/g64MonkeyD.Christ
+New/g64NMKY/g64NMKY
+New/GameBoy/GameBoy
+New/ge_alisa_ak/ge_alisa_ak
+New/Giant_Ultraman/Giant Ultraman/Giant Ultraman.def
+New/GNHKN/GNHKN
+New/Hamtaro/Hamtaro
+New/heavypokebro/heavy/heavy.def
+New/hotaride/hotaride
+New/ikamusume/ikamusume
+New/kagura/kagura
+New/King Harkinian/King Harkinian
+New/konata/konata
+New/Lelouch/Lelouch
+New/lucina2/lucina2
+New/MATAOMAEKA/MATAOMAEKA
+New/Michael-Jackson/Michael-Jackson
+New/Michael-Jackson_RockRage8962s/Michael-Jackson RockRage8962's edit's/Michael-Jackson RockRage8962's edit's.def
+New/miffy/miffy
+
+New/Minotaur/Minotaur
+New/Motoko_Kusanagi/Motoko/Motoko.def
+New/mugen-nazicommander/soldiernew/soldiernew.def
+;;New/mugen-panzercompany/panzercompany/panzercompany.def
+;New/P-OmegaTH/P-OmegaTH
+New/Pac-Man/Pac-Man
+New/Pacmanghosts/Blinky/Blinky.def
+New/Pacmanghosts/Clyde/Clyde.def
+New/Pacmanghosts/Inky/Inky.def
+New/Pacmanghosts/Pinky/Pinky.def
+New/Phoenix_Wright/Phoenix Wright/Phoenix Wright.def
+New/REIMU/REIMU
+New/richter0/richter0
+New/ROBbeta/ROB/ROB.def
+New/rouna/rouna
+New/Ryuko Matoi Senketsu/Ryuko Matoi Senketsu.def
+;New/Saitama/Saitama
+New/Sakaki/Sakaki
+New/sakamoto/sakamoto
+New/Satsuki_Kiryuin/Satsuki_Kiryuin
+New/Satsuki_Kiryuin_Junketsu_Kill/Satsuki_Kiryuin_Junketsu_Kill
+New/SH/SH
+New/Shanoa_1_0/Shanoa_1_0
+;New/simon0/simon0
+New/skeletor/skeletor
+New/s_crea-f/s_crea-f
+New/s_sakura/s_sakura
+;New/The_King/The_King
+New/Thomas/Thomas
+New/TomoTakino/TomoTakino
+New/ToukaWIP/ToukaWIP
+New/TWinky/TWinky
+New/ugandanknuckles/ugandanknuckles
+New/Umaru_Doma/Umaru_Doma
+New/walkure-OGGY/walkure-OGGY
+New/wolfwood/wolfwood
+New/Yukari/Yukari
+New/Zangado/Zangado
+;
+;NIJIKAKU				NIJIKAKU			NIJIKAKU
+;NIJIKAKU/Rusty/Rusty.def, stages/LvsR.def
+;NIJIKAKU/Windows 2K/Windows 2K.def, stages/95sakura.def
+NIJIKAKU/darii/darii.def, stages/kyokai.def
+NIJIKAKU/hidoi/hidoi.def, stages/kouen.def
+NIJIKAKU/ojisama/ojisama.def, stages/kyokai.def
+;NIJIKAKU/ore/ore.def, stages/kouen.def
+;NIJIKAKU/runa/runa.def, stages/kouen.def
+;NIJIKAKU/ryuuou/ryuuou.def, stages/kyokai.def
+NIJIKAKU/waha-/waha-.def, stages/sougen.def
+;NIJIKAKU/XP/XP.def
+NIJIKAKU/yamiyuki/yamiyuki.def, stages/kouen.def
+;
+;OFTERS					OFTERS				OFTERS
+OFTERS/0D_Bushou/0D_Bushou.def, randomselect
+OFTERS/0D_Kousonsyou/0D_Kousonsyou.def
+OFTERS/0D_Ox/0D_Ox.def
+OFTERS/0D_ShiShin/0D_ShiShin.def
+OFTERS/ADO/ADO.def, stages/AdoClouds.def
+OFTERS/Anpanman/Anpanman.def
+OFTERS/Baikinman/Baikinman.def
+OFTERS/BibinMC/BibinMC.def
+OFTERS/Birdon/Birdon.def, stages/Grasslands.def
+OFTERS/Blade/Blade.def
+OFTERS/Blaque/Blaque.def
+OFTERS/Bonkers/Bonkers.def, stages/knidbutterbuilding.def
+OFTERS/Bugzzy/Bugzzy.def, stages/Grasslands.def
+OFTERS/BurninLeo/BurninLeo.def, stages/Grasslands.def
+OFTERS/CMPunk/CMPunk.def
+OFTERS/Chowder/Chowder.def, stages/marzipan.def
+OFTERS/Cloud_S/Cloud_S.def
+OFTERS/Diablo/Diablo.def
+OFTERS/EkaraNisemon/EkaraNisemon.def, stages/Cul-de-Sac.def
+OFTERS/Fiona/Fiona.def
+OFTERS/Freddy Krueger/Freddy Krueger.def
+OFTERS/Gim/Gim.def, stages/knidbutterbuilding.def
+OFTERS/Goey 339/Goey 339.def, stages/Grasslands.def
+OFTERS/Golem/Golem.def, stages/Grasslands.def
+OFTERS/Heart_Aino_XIII/Heart_Aino_XIII.def
+OFTERS/HibikiK/HibikiK.def
+OFTERS/Kirby/Kirby.def, stages/whisperforest.def
+OFTERS/Kratos2/Kratos2.def
+OFTERS/Leo/Leo.def
+OFTERS/Lloyd_Irving/Lloyd_Irving.def
+OFTERS/Makoto_Mizoguchi/Makoto_Mizoguchi.def
+OFTERS/MetaKnight/MetaKnight.def, stages/Halberd.def
+OFTERS/Mordecai/Mordecai.def
+OFTERS/MungDaal/MungDaal.def, stages/marzipan.def
+OFTERS/ORCHID/ORCHID.def
+OFTERS/Pingu/Pingu.def
+OFTERS/QUEEN/QUEEN.def
+OFTERS/RyuHayabushaXBOX/RyuHayabushaXBOX.def
+OFTERS/Sabrewulf_KI2/Sabrewulf_KI2.def
+OFTERS/Saki/Saki.def
+OFTERS/Scharlachrot_A/Scharlachrot_A.def
+OFTERS/Snake/Snake.def
+OFTERS/Spinal_KI2/Spinal_KI2.def
+OFTERS/Squall/Squall.def
+OFTERS/Sweet Tooth/Sweet Tooth.def
+OFTERS/Tetsu/Tetsu.def
+OFTERS/Tifa_L/Tifa_L.def
+OFTERS/angelica/angelica.def
+OFTERS/aok_kira/aok_kira.def
+OFTERS/aok_meifang/aok_meifang.def
+OFTERS/blizzard/blizzard.def
+OFTERS/cless/cless.def
+OFTERS/cvsyoko/cvsyoko.def
+OFTERS/d4kirby/d4kirby.def, stages/whisperforest.def
+;OFTERS/dedede/dedede.def, stages/kirbybg.def
+OFTERS/ed2/ed2.def, stages/Yummy.def
+OFTERS/edd/edd.def, stages/Cul-de-Sac.def
+OFTERS/fine_z/fine_z.def
+OFTERS/hashimoto/hashimoto.def
+OFTERS/jason/jason.def
+OFTERS/ju_kwsk/ju_kwsk.def, stages/Grasslands.def
+OFTERS/kirby1105/kirby1105.def, stages/whisperforest.def
+OFTERS/knuckle/knuckle.def, stages/Grasslands.def
+OFTERS/kyle/kyle.def
+OFTERS/p_warrior/p_warrior.def
+OFTERS/rigby1105/rigby1105.def
+;OFTERS/robocop/robocop.def
+OFTERS/sephiroth_ak/sephiroth_ak.def
+OFTERS/talon/talon.def
+OFTERS/vertigo/vertigo.def
+OFTERS/zazie/zazie.def
+;
+;ORIGINAL				ORIGINAL				ORIGINAL
+ORIGINAL/CvTWchuchoryu/CvTWchuchoryu.def
+ORIGINAL/Dark Storm K/Dark Storm K.def, stages/InfiniteAir.def, music=sound/nm102.mid
+ORIGINAL/DivineKFG/DivineKFG.def
+ORIGINAL/DivineKFM/DivineKFM.def
+ORIGINAL/DragonClaw/DragonClaw.def
+ORIGINAL/Ella/Ella.def, stages/A_MIDSUMMERS_BLISS.def
+;ORIGINAL/Gospenoreiga/Gospenoreiga.def
+ORIGINAL/SymbioteAnpanman/SymbioteAnpanman.def, stages/InfiniteAir.def, music=sound/nm102.mid
+ORIGINAL/SymbioteBaikinman/SymbioteBaikinman.def, stages/InfiniteAir.def, music=sound/nm102.mid
+ORIGINAL/UBU/UBU.def, stages/HADES_DOCK.def
+ORIGINAL/cvsbluestreak/cvsbluestreak.def
+ORIGINAL/giano/giano.def, stages/STREETS_OF_NYC.def
+ORIGINAL/kuando/kuando.def, stages/NYC_ALLEY_1280X720.def
+ORIGINAL/mery/mery.def
+ORIGINAL/so_mb02/so_mb02.def
+ORIGINAL/trist/trist.def
+ORIGINAL/yoma/yoma.def
+;
+;
+Other/Angel1/Angel1
+Other/asuka/asuka
+Other/Asuka_BR/Asuka_BR
+Other/Ayane_WPe/Ayane_WPe
+Other/Ayane_WPX/Ayane_WPX
+Other/Daimon Hakumen/Daimon Hakumen
+Other/karina_toyota/karina_toyota
+Other/King AoF2/King AoF2
+Other/King Lion/King Lion
+Other/king nxc/king nxc
+Other/king1/king1
+Other/Mulan/Mulan
+Other/nxc_hei/nxc_hei
+Other/nxc_toron/nxc_toron
+Other/rosemary/rosemary
+Other/Ryuhi/Ryuhi
+Other/Ryuhi_sd/Ryuhi_sd
+Other/Shin Kazuma/Shin Kazuma
+Other/tetsu/tetsu
+Other/Tetsu2/Tetsu2
+Other/tetsuo_advance/tetsuo_advance
+Other/Yawara_Yamabuki/Yawara_Yamabuki
+;
+;
+Random-japan1/AL/AL                             
+Random-japan1/cureblack/cureblack                      
+Random-japan1/dorothy/dorothy                        
+;Random-japan1/edogawa_conan_AprilFool/edogawa_conan_AprilFool        
+Random-japan1/gosunkugi/gosunkugi                      
+Random-japan1/haruhi_y/haruhi_y                       
+;Random-japan1/jiban/jiban                          
+Random-japan1/kirino/kirino                         
+Random-japan1/mamiya/mamiya                         
+Random-japan1/miku/miku                           
+Random-japan1/natsumi/natsumi                        
+Random-japan1/pantyhose_taro/pantyhose_taro                 
+Random-japan1/Pz.Kpfw.IV_From_Anglerfish_Team/Pz.Kpfw.IV_From_Anglerfish_Team
+Random-japan1/yamisaka_kureha/yamisaka_kureha
+Random-japan1/Asuna_K/Asuna_K
+Random-japan1/Emi_K/Emi_K
+Random-japan1/Homura_K/Homura_K
+Random-japan1/Kirino_K/Kirino_K
+Random-japan1/Kuroyukihime_K/Kuroyukihime_K
+Random-japan1/Miyuki_K/Miyuki_K
+Random-japan1/Rentaro_K/Rentaro_K
+Random-japan1/Selvaria_K/Selvaria_K
+Random-japan1/Senna_K/Senna_K
+Random-japan1/Shana_K/Shana_K
+Random-japan1/adachi/adachi
+Random-japan1/ren/ren
+Random-japan1/Shizuru/Shizuru
+Random-japan1/S_Sinclair/S_Sinclair
+Random-japan1/Taiga_K/Taiga_K
+Random-japan1/Yuzuriha/Yuzuriha
+Random-japan1/george/george                         
+Random-japan1/Ber Eri/Ber Eri
+Random-japan1/Eva Roza/Eva Roza
+Random-japan1/Jessi rono/Jessi rono
+Random-japan1/Lucifer_T/Lucifer_T
+Random-japan1/ange/ange                           
+Random-japan1/willard/willard 
+;
+;Randomshit					Randomshit					Randomshit
+Randomshit/!bob_ex/!bob_ex			
+Randomshit/!falcon/!falcon
+Randomshit/!Ilu/!Ilu
+Randomshit/!saizo/!saizo
+Randomshit/!skazuma/!skazuma
+Randomshit/!so_mexican/!so_mexican
+Randomshit/@Annie Hamilton/@Annie Hamilton
+Randomshit/binladen/binladen
+Randomshit/Count Dracula/Count Dracula
+Randomshit/he-man/he-man
+Randomshit/Rocky/Rocky
+Randomshit/samurai_jack/samurai_jack
+Randomshit/Spongebob/Spongebob
+Randomshit/Winnie/Winnie
+;
+;
+ROZENMUGEN/jun/jun.def
+ROZENMUGEN/kana/kana.def
+ROZENMUGEN/shink/shink.def
+ROZENMUGEN/suigintohF/suigintohF.def
+ROZENMUGEN/suigintoh/suigintoh.def
+ROZENMUGEN/suigintou/suigintou.def
+ROZENMUGEN/souseiseki/souseiseki
+;
+;SailorMoon					SailorMoon					SailorMoon
+SailorMoon/@SailorNeptune/@SailorNeptune	
+SailorMoon/Acabodra/Acabodra
+SailorMoon/Atsugessho/Atsugessho
+SailorMoon/Beryl/Beryl
+SailorMoon/Castor/Castor
+SailorMoon/CastorNPollux/CastorNPollux
+SailorMoon/Diamon1/Diamon1
+SailorMoon/Diamond/Diamond
+SailorMoon/emerald/emerald
+SailorMoon/Jadeite/Jadeite
+SailorMoon/jupiter/jupiter
+SailorMoon/mars/mars
+SailorMoon/mercury/mercury
+SailorMoon/moon/moon
+SailorMoon/Moraga/Moraga
+SailorMoon/neptune/neptune
+SailorMoon/neptune1/neptune1
+SailorMoon/pluto/pluto
+SailorMoon/PLUTO1/PLUTO1
+SailorMoon/pluto2/pluto2
+SailorMoon/QueenBeryl/QueenBeryl
+SailorMoon/rubeus/rubeus
+SailorMoon/Sailor Jupiter/Sailor Jupiter
+SailorMoon/Sailor Mars/Sailor Mars
+SailorMoon/Sailor Mercury/Sailor Mercury
+SailorMoon/Sailor Moon/Sailor Moon
+SailorMoon/Sailor Neptune/Sailor Neptune
+SailorMoon/Sailor Pluto/Sailor Pluto
+SailorMoon/Sailor V/Sailor V
+SailorMoon/Sailor Venus/Sailor Venus
+SailorMoon/SailorJupiter/SailorJupiter
+SailorMoon/SailorMars/SailorMars
+SailorMoon/SailorMercury/SailorMercury1
+SailorMoon/SailorMoon/SailorMoon
+SailorMoon/SailorMoon1/SailorMoon
+SailorMoon/SailorNeptune/SailorNeptune
+SailorMoon/SailorPluto/SailorPluto
+SailorMoon/SailorSaturn/SailorSaturn
+SailorMoon/SailorUranus/SailorUranus
+SailorMoon/SailorV/SailorV
+SailorMoon/Sailor_Jupiter/Sailor_Jupiter
+SailorMoon/Sailor_Mars/Sailor_Mars
+SailorMoon/Sailor_Mercury/Sailor_Mercury
+SailorMoon/sailor_mercury1/sailor_mercury1
+SailorMoon/Sailor_Moon3/Sailor_Moon3
+SailorMoon/sailor_neptune/sailor_neptune
+SailorMoon/Sailor_Saturn/Sailor_Saturn
+SailorMoon/Sailor_Venus/Sailor_Venus
+SailorMoon/saturn/saturn
+SailorMoon/Serena/Serena
+SailorMoon/uranus/uranus
+SailorMoon/zoicite/zoi
+;
+;SaintSeiya				SaintSeiya					SaintSeiya
+SaintSeiya/Andromeda la Notte/Andromeda la Notte
+SaintSeiya/misty/misty             
+SaintSeiya/ryuho/ryuho             
+SaintSeiya/Seiya/Seiya             
+SaintSeiya/Seiya3/Seiya3
+SaintSeiya/bud/Bud
+SaintSeiya/doll/doll
+SaintSeiya/Hagen/Hagen
+SaintSeiya/hyoga2/hyoga2
+SaintSeiya/Ikki2/Ikki2
+SaintSeiya/kikijamir/kikijamir
+SaintSeiya/luxor/luxor
+SaintSeiya/Marin/Marin
+SaintSeiya/Megres/Megres
+SaintSeiya/mime/mime
+;SaintSeiya/mizard/mizard
+SaintSeiya/shiryu2/shiryu2
+SaintSeiya/sigfried/sigfried
+
+;
+;SHADESOFMANHATTAN					SHADESOFMANHATTAN					SHADESOFMANHATTAN
+SHADESOFMANHATTAN/Fray2010/Fray2010.def
+SHADESOFMANHATTAN/Garret/Garret.def
+SHADESOFMANHATTAN/Moses/Moses.def
+SHADESOFMANHATTAN/thirteen/thirteen.def
+;
+;SNK				SNK				SNK				SNK
+SNK/alice/alice
+SNK/alice_bogard1.3/alice_bogard1.3
+SNK/Another Iori/Another Iori
+SNK/anotherKyo/anotherKyo
+SNK/ASH/ASH
+SNK/ASH_AoD/ASH_AoD
+SNK/benimaru/benimaru
+SNK/Blue Mary/Blue Mary
+SNK/chris/chris
+SNK/chris2/chris2
+SNK/Chris_Vs/Chris_Vs
+SNK/Clark/Clark
+SNK/crazyjoe/crazyjoe
+SNK/daimon/daimon
+SNK/daimonx/daimonx
+SNK/dan svc/dan svc
+SNK/Dark Athena/Dark Athena
+SNK/Date_Masamune/Date_Masamune
+SNK/dragon/dragon
+SNK/duck_king/duck_king
+SNK/EX-Kyo/EX-Kyo
+SNK/FFcody/FFcody
+SNK/galford/galford
+SNK/galford1/galford
+SNK/geese/geese
+SNK/god yuri/god yuri
+SNK/goddess athena/goddess athena
+SNK/griffon_pro/griffon_pro
+SNK/hanzo1/hanzo1
+SNK/heavy d kof98/heavy d kof98
+SNK/hibiki/hibiki
+SNK/hibiki 2/hibiki 2
+SNK/hikaru/hikaru
+SNK/HikaruKOF/HikaruKOF
+SNK/hotaru_mow/hotaru_mow
+SNK/ingrid/ingrid
+SNK/Ingrid2/Ingrid2
+SNK/I_Lilica/I_Lilica
+SNK/jenet/jenet
+SNK/Joe/Joe
+SNK/Juke Mary R/Juke Mary R
+SNK/J_hotaru/J_hotaru
+SNK/kim 2/kim 2
+SNK/kim jae hoon/kim jae hoon
+SNK/king/king
+SNK/kofryoko/kofryoko
+SNK/KOF_Meirin/KOF_Meirin
+SNK/krauser/krauser
+SNK/kyo/kyo
+SNK/kyoko_kirisima/kyoko_kirisima
+SNK/leona/leona
+SNK/mai/mai
+SNK/mai2/mai2
+SNK/mai3/mai3
+SNK/MaiKOF/MaiKOF
+SNK/Mai_K/Mai_K
+SNK/marco2/marco2
+SNK/Marco_nbc/Marco_nbc
+SNK/mr karate/mr karate
+SNK/Mr Karate 2/Mr Karate 2
+SNK/mr karate ryo/mr karate ryo
+SNK/M_Geese/M_Geese
+SNK/N-Geese/N-Geese
+SNK/nakoruru/nakoruru
+SNK/neokyo/neokyo
+SNK/newnako/newnako
+SNK/oni kyo/oni kyo
+SNK/r-rock/r-rock
+SNK/Robert AoF2/Robert AoF2
+SNK/Robert2/Robert2
+SNK/ROBO K'/ROBO K'
+SNK/robo kula/robo kula
+SNK/rock/rock
+SNK/rock2/rock2
+SNK/Rock_TX/Rock_TX
+SNK/rugal/rugal
+SNK/Rugal-01/Rugal-01
+SNK/Ryo/Ryo
+SNK/Ryo AoF2/Ryo AoF2
+SNK/ryo2002/ryo2002
+SNK/ryoko_FHD/ryoko_FHD
+SNK/Ryoko_Kano/Ryoko_Kano
+SNK/ryusnk/ryusnk
+SNK/Samchay fighters history 0.8 Duende Macabro/Samchay fighters history 0.8 Duende Macabro
+SNK/Shin Joe/Shin Joe
+SNK/sodom/sodom
+SNK/svckarate/svckarate
+SNK/Ukyo/Ukyo
+SNK/Ukyo2/Ukyo2
+SNK/UM-Alba/UM-Alba
+SNK/vanessa/vanessa
+SNK/vice/vice
+SNK/whip/whip
+SNK/WHP-Dragon/WHP-Dragon
+SNK/WHP-Fuuma/WHP-Fuuma
+SNK/WHP-hanzou/WHP-hanzou
+SNK/WHP-NeoGeegus/WHP-NeoGeegus
+SNK/WHP-Ryoko/WHP-Ryoko
+SNK/WHP-Zeus/WHP-Zeus
+SNK/zantetsu/zantetsu
+SNK/Zero_Hotaru/Zero_Hotaru
+;
+;SNK2				SNK2				SNK2
+SNK2/0D_Raiden/0D_Raiden.def
+SNK2/Ash/Ash.def
+SNK2/DivineKula/DivineKula.def
+SNK2/Geese/Geese.def
+SNK2/Ingrid/Ingrid.def
+SNK2/Kim/Kim.def
+SNK2/Krauser/Krauser.def
+SNK2/KyoXIII/KyoXIII.def
+SNK2/Mrkarate/Mrkarate.def
+SNK2/Nakoruru/Nakoruru.def
+SNK2/Yuri/Yuri.def
+SNK2/athena02/athena02.def
+SNK2/brocken/brocken.def
+SNK2/cvsg_rugal/cvsg_rugal.def, stages/InfiniteAir.def, music=sound/nm102.mid
+SNK2/cvsxRock/cvsxRock.def
+SNK2/cvsxRugal/cvsxRugal.def
+SNK2/ioriXI/ioriXI.def
+SNK2/jmax/jmax.def
+SNK2/kofroomi/kofroomi.def
+SNK2/marco/marco.def
+SNK2/mary/mary.def
+SNK2/mow_griffon/mow_griffon.def
+SNK2/mow_hotaru/mow_hotaru.def
+SNK2/mow_terry/mow_terry.def
+SNK2/mp/mp.def
+SNK2/reas/reas.def
+SNK2/shura/shura.def
+SNK2/wh_dragon/wh_dragon.def
+SNK2/whp_ryofu/whp_ryofu.def
+;
+;
+;SOUL CALIBUR
+soulcalibur/CvS_SeungMina/CvS_SeungMina
+soulcalibur/Erza0/Erza0
+soulcalibur/Ivy/Ivy
+soulcalibur/Mitsurugi/Mitsurugi
+soulcalibur/Sophitia/Sophitia
+;
+;TGAF				TGAF				TGAF
+;TFGAF/Berserker/Berserker.def, stages/BERSERKERSTAGE.def
+;TFGAF/BrawlMan/BrawlMan.def, stages/BRAWLMANSROBOFACTORY.def
+;TFGAF/CrossStitch-OutOfThisWorldBoss/CrossStitch-OutOfThisWorldBoss.def, stages/CROSSSTITCHSTAGE.def
+;TFGAF/DarkFistMan/DarkFistMan.def, stages/BRAWLMANSROBOFACTORY.def
+;TFGAF/DensoGuy/DensoGuy.def, stages/JAPAN1.def
+;TFGAF/DoctorFrogut/DoctorFrogut.def, stages/DRFROGUTCASTLE.def
+;TFGAF/FinalBossMan/FinalBossMan.def, stages/FINALBOSSCASTLE.def
+;TFGAF/FistMan/FistMan.def, stages/GERMANY1.def
+;TFGAF/KavantoInterga/KavantoInterga.def, stages/FRANCE1.def
+;TFGAF/RichardCortwog/RichardCortwog.def, stages/GERMANY2.def
+;
+;Touhou					Touhou					Touhou
+;Touhou/AT_Cirno/AT_Cirno
+Touhou/J_cirno/J_cirno 
+Touhou/Marisa/Marisa  
+Touhou/Reimu/Reimu   
+Touhou/reimu2/Reimu  
+Touhou/remilia/remilia 
+;
+;TOUHOU2				TOUHOU2					TOUHOU2
+TOUHOU2/Flandre_Scarlet/Flandre_Scarlet.def, stages/TH10.5_Youkai_no_yama.def
+TOUHOU2/Hong_Meirin/Hong_Meirin.def, stages/TH10.5_Youkai_no_yama.def
+TOUHOU2/Marisa_K/Marisa_K.def, stages/TH10.5_Youkai_no_yama.def
+TOUHOU2/NACH02_Remilia/NACH02_Remilia.def, stages/TH10.5_Youkai_no_yama.def
+TOUHOU2/NACH03_MP-Suika/NACH03_MP-Suika.def, stages/TH10.5_Youkai_no_yama.def
+TOUHOU2/NACH04_Reimu/NACH04_Reimu.def, stages/TH10.5_Youkai_no_yama.def
+TOUHOU2/Shanghai_Alice/Shanghai_Alice.def, stages/TH10.5_Youkai_no_yama.def
+TOUHOU2/Shanghai_Alice/Shanghai_Alice.def, stages/TH10.5_Youkai_no_yama.def
+TOUHOU2/Youmu/Youmu.def, stages/TH10.5_Youkai_no_yama.def
+;
+
+;empty
+;empty
+;empty
+;empty
+;UnsortedShit					UnsortedShit				UnsortedShit
+UnsortedShit/009/009						
+UnsortedShit/00bigbear/00bigbear
+UnsortedShit/00gato/00gato
+UnsortedShit/119way-Mizoguchi/119way-Mizoguchi
+;UnsortedShit/20k/20k
+;UnsortedShit/666/666
+UnsortedShit/a-jissou/a-jissou
+;UnsortedShit/A.B.A/A.B.A
+UnsortedShit/a0cbt/a0cbt
+UnsortedShit/aarbron/aarbron
+UnsortedShit/aba/aba
+UnsortedShit/abe/abe
+UnsortedShit/Abomination/Abomination
+UnsortedShit/abubo/abubo
+UnsortedShit/abui/abui
+UnsortedShit/adel/adel
+UnsortedShit/adon/adon
+UnsortedShit/Agony_SW/Agony_SW
+UnsortedShit/ai/ai
+
+UnsortedShit/Aiolia/Aiolia
+UnsortedShit/Aizen/Aizen
+UnsortedShit/akari/akari
+UnsortedShit/Akemi/Akemi
+UnsortedShit/akfm/akfm
+UnsortedShit/akira_h/akira_h
+UnsortedShit/Ako/Ako
+UnsortedShit/akonoundies/akonoundies
+;UnsortedShit/Aldebaran/Aldebaran
+UnsortedShit/alessi/alessi
+UnsortedShit/alex/alex
+UnsortedShit/alfred/alfred
+UnsortedShit/Alien_D/Alien_D
+UnsortedShit/Alien_W/Alien_W
+UnsortedShit/Amakusa/Amakusa
+UnsortedShit/amano/amano
+UnsortedShit/ami/ami
+UnsortedShit/amibf/amibf
+UnsortedShit/Andore Jr/Andore Jr
+UnsortedShit/andy/andy
+UnsortedShit/Aner/Aner
+UnsortedShit/Angela/Angela
+UnsortedShit/Angela_PI1/Angela_PI1
+UnsortedShit/ANJI/ANJI
+UnsortedShit/anji_s/anji_s
+UnsortedShit/anne/anne
+UnsortedShit/annie/annie
+UnsortedShit/Anonym-guard/Anonym-guard
+UnsortedShit/another k/another k
+UnsortedShit/Another Unknown/Another Unknown
+UnsortedShit/another_kfm/another_kfm
+UnsortedShit/anubis/anubis
+UnsortedShit/AOBA/AOBA
+UnsortedShit/aof2micky/aof2micky
+UnsortedShit/AOFThug/AOFThug
+UnsortedShit/aok_kanae/aok_kanae
+UnsortedShit/AOSHI/AOSHI
+UnsortedShit/apoc/apoc
+UnsortedShit/arabianmoon/arabianmoon
+UnsortedShit/Arad_Silvermoon/Arad_Silvermoon
+UnsortedShit/araknen/araknen
+UnsortedShit/arina/arina
+UnsortedShit/Arshes Nei/Arshes Nei
+UnsortedShit/Arthur/Arthur
+UnsortedShit/Aska/Aska
+;UnsortedShit/Astaroth/Astaroth
+UnsortedShit/Astraea/Astraea
+UnsortedShit/asura_nbc/asura_nbc
+;UnsortedShit/asuta/asuta
+UnsortedShit/Asutorea/Asutorea
+UnsortedShit/atusi/atusi
+UnsortedShit/Aty/Aty
+UnsortedShit/Avalanche/Avalanche
+UnsortedShit/AVDOL/AVDOL
+;UnsortedShit/Awakened Kaede/Awakened Kaede
+UnsortedShit/Axelhawk/Axelhawk
+;UnsortedShit/Baby/Baby
+UnsortedShit/Bai-Hu/Bai-Hu
+UnsortedShit/baki/baki
+UnsortedShit/baldhead/baldhead
+UnsortedShit/bane/bane
+UnsortedShit/Bang/Bang
+UnsortedShit/BAOM/BAOM
+UnsortedShit/basara/basara
+UnsortedShit/batsu3d/batsu3d
+;UnsortedShit/bc/bc
+;UnsortedShit/bd2/bd2
+UnsortedShit/Beast/Beast
+UnsortedShit/beavis/beavis
+UnsortedShit/bebi/bebi
+UnsortedShit/benten/benten
+;UnsortedShit/Berserk-4th/Berserk-4th
+UnsortedShit/big bear/big bear
+UnsortedShit/billykane/billykane
+UnsortedShit/binran/binran
+UnsortedShit/Birdie/Birdie
+UnsortedShit/Birdy/Birdy
+UnsortedShit/bishamon/bishamon
+UnsortedShit/Bko/Bko
+UnsortedShit/Black Magician Girl/Black Magician Girl
+UnsortedShit/Black Tiger/Black Tiger
+UnsortedShit/blackpolnareff/blackpolnareff
+UnsortedShit/blair/blair
+UnsortedShit/blair_dame/blair_dame
+UnsortedShit/blaze agent/blaze agent
+UnsortedShit/Blaze Fielding/Blaze Fielding
+;UnsortedShit/blob/blob
+UnsortedShit/blockhead/blockhead
+UnsortedShit/BloodRayne/BloodRayne
+UnsortedShit/bmg/bmg
+UnsortedShit/bob_PRO/bob_PRO
+UnsortedShit/bola/bola
+UnsortedShit/brian/brian
+UnsortedShit/BS-Mirage/BS-Mirage
+UnsortedShit/bubblegum1105/bubblegum1105
+UnsortedShit/BunnieMH/BunnieMH
+UnsortedShit/BunnyTracy/BunnyTracy
+UnsortedShit/Buntaro/Buntaro
+UnsortedShit/burta/burta
+UnsortedShit/Byakki/Byakki
+UnsortedShit/Byakuya/Byakuya
+UnsortedShit/b_mahoro/b_mahoro
+UnsortedShit/B_Raiya/B_Raiya
+UnsortedShit/C.FalconW/C.FalconW
+UnsortedShit/C01KEN/C01KEN
+UnsortedShit/c18/c18
+UnsortedShit/Caliban/Caliban
+UnsortedShit/cameo/cameo
+UnsortedShit/Cang-Long/Cang-Long
+UnsortedShit/capella/capella
+UnsortedShit/carlos/carlos
+UnsortedShit/carnage/carnage
+UnsortedShit/carnage2/carnage2
+UnsortedShit/Carnage_SW/Carnage_SW
+UnsortedShit/cassandra/cassandra
+UnsortedShit/cham cham/cham cham
+UnsortedShit/chang/chang
+UnsortedShit/Charlie/Charlie
+UnsortedShit/charlotte/charlotte
+UnsortedShit/chen-mao/chen-mao
+UnsortedShit/CHIBI/CHIBI
+UnsortedShit/chicken/chicken
+UnsortedShit/Chiho Masuda/Chiho Masuda
+UnsortedShit/Chin Gentsai/Chin Gentsai
+UnsortedShit/chinnen/chinnen
+UnsortedShit/Chizuru/Chizuru
+UnsortedShit/choi/choi
+UnsortedShit/Chonrei_nbc/Chonrei_nbc
+UnsortedShit/chonshu/chonshu
+UnsortedShit/Chosen Ken/Chosen Ken
+UnsortedShit/CHOSU/CHOSU
+UnsortedShit/Chouji_COSPLAY/Chouji_COSPLAY
+UnsortedShit/Chousokabe_Motochika/Chousokabe_Motochika
+UnsortedShit/Chromia/Chromia
+UnsortedShit/Chrysalis/Chrysalis
+UnsortedShit/Citizens(weak)/Citizens(weak)
+UnsortedShit/clayface/clayface
+UnsortedShit/cless alvein/cless alvein
+UnsortedShit/CLONE ZERO/CLONE ZERO
+UnsortedShit/Colossonaut/Colossonaut
+UnsortedShit/cougar/cougar
+UnsortedShit/cream/cream
+;UnsortedShit/crili/crili
+UnsortedShit/crystal/crystal
+UnsortedShit/Cyber Woo/Cyber Woo
+UnsortedShit/cyborg_mai/cyborg_mai
+UnsortedShit/D'BO/D'BO
+UnsortedShit/Daichi-Jin/Daichi-Jin
+;UnsortedShit/Daichi-Sin/Daichi-Sin
+UnsortedShit/daimaoh/daimaoh
+UnsortedShit/damnd/damnd
+UnsortedShit/DANDY J/DANDY J
+UnsortedShit/daolong/daolong
+UnsortedShit/dark bolt/dark bolt
+UnsortedShit/Darkseid/Darkseid
+UnsortedShit/Dazzler/Dazzler
+UnsortedShit/Dcat_Adam/Dcat_Adam
+UnsortedShit/Dcat_BlazeFielding/Dcat_BlazeFielding
+UnsortedShit/Dcat_Skate/Dcat_Skate
+UnsortedShit/DDS/DDS
+UnsortedShit/DD_Billy/DD_Billy
+UnsortedShit/DD_Jimmy/DD_Jimmy
+UnsortedShit/dean/dean
+;UnsortedShit/death/death
+UnsortedShit/Death Ogre/Death Ogre
+UnsortedShit/death13/death13
+UnsortedShit/deathm/deathm
+UnsortedShit/DeathOgre/DeathOgre
+UnsortedShit/DeathstrokeOLD/DeathstrokeOLD
+UnsortedShit/December/December
+UnsortedShit/deejay/deejay
+UnsortedShit/Deimos/Deimos
+
+UnsortedShit/Deliza/Deliza
+UnsortedShit/DevilJ/DevilJ
+UnsortedShit/DEVILOTTE/DEVILOTTE
+UnsortedShit/diaochan/diaochan
+UnsortedShit/Dino/Dino
+UnsortedShit/dinocar/dinocar
+;UnsortedShit/Dinozord/Dinozord
+UnsortedShit/DivinePoison/DivinePoison
+UnsortedShit/DKR/DKR
+UnsortedShit/docock/docock
+UnsortedShit/don/don
+UnsortedShit/DongHwan/DongHwan
+;UnsortedShit/Doparmin/Doparmin
+UnsortedShit/DOSU_COSPLAY/DOSU_COSPLAY
+UnsortedShit/Draculina/Draculina
+UnsortedShit/DRaven/DRaven
+;UnsortedShit/DrillAsamin/DrillAsamin
+UnsortedShit/DrZan/DrZan
+UnsortedShit/DSJ_Janne/DSJ_Janne
+UnsortedShit/Dulton/Dulton
+UnsortedShit/dunbai/dunbai
+UnsortedShit/duolon/duolon
+UnsortedShit/DuoLon_XI/DuoLon_XI
+UnsortedShit/Dutch_Schaefer/Dutch_Schaefer
+UnsortedShit/dyan/dyan
+;UnsortedShit/E-102r/E-102r
+UnsortedShit/earthquake/earthquake
+UnsortedShit/edward/edward
+UnsortedShit/Eighteen/Eighteen
+UnsortedShit/EijiShirow/EijiShirow
+UnsortedShit/Eiji_XI/Eiji_XI
+UnsortedShit/elastigirl/elastigirl
+;UnsortedShit/elder/elder
+UnsortedShit/eleicia/eleicia
+UnsortedShit/elena/elena
+UnsortedShit/elias/elias
+UnsortedShit/elisabeth/elisabeth
+UnsortedShit/Elita_One/Elita_One
+UnsortedShit/Eliza/Eliza
+UnsortedShit/enja/enja
+UnsortedShit/enja 2/enja 2
+UnsortedShit/Enmko/Enmko
+UnsortedShit/Enn/Enn
+UnsortedShit/Enya/Enya
+UnsortedShit/eq-PrincessPeach/eq-PrincessPeach
+UnsortedShit/eric/eric
+UnsortedShit/Erradicator/Erradicator
+UnsortedShit/eryu/eryu
+UnsortedShit/Erza_FM/Erza_FM
+UnsortedShit/eslash/eslash
+UnsortedShit/EspioSTF/EspioSTF
+UnsortedShit/EternalChampion/EternalChampion
+UnsortedShit/etna/etna
+UnsortedShit/evil soul/evil soul
+UnsortedShit/EVILSHAOLIN/EVILSHAOLIN
+UnsortedShit/falcon/falcon
+UnsortedShit/February/February
+UnsortedShit/Feilin/Feilin
+UnsortedShit/FHD_Feilin/FHD_Feilin
+UnsortedShit/Fio/Fio
+UnsortedShit/flash/flash
+UnsortedShit/Fliz/Fliz
+UnsortedShit/flor/flor
+UnsortedShit/footee/footee
+UnsortedShit/Fortress_Maximus/Fortress_Maximus
+UnsortedShit/fox/fox
+UnsortedShit/Foxy/Foxy
+UnsortedShit/free/free
+UnsortedShit/fubuki/fubuki
+UnsortedShit/fulgore/fulgore
+UnsortedShit/fuuma/fuuma
+UnsortedShit/F_Balrog/F_Balrog
+UnsortedShit/G-Silver/G-Silver
+UnsortedShit/G.Ken/G.Ken
+
+UnsortedShit/Gaara_COSPLAY/Gaara_COSPLAY
+UnsortedShit/Gabriel/Gabriel
+UnsortedShit/gai/gai
+UnsortedShit/Gai_XI/Gai_XI
+UnsortedShit/Galvatron/Galvatron
+UnsortedShit/Gaoh/Gaoh
+UnsortedShit/Gara/Gara
+UnsortedShit/garrow/garrow
+UnsortedShit/gato/gato
+UnsortedShit/gbit/gbit
+UnsortedShit/GeneralBlue/GeneralBlue
+UnsortedShit/Genjuro/Genjuro
+UnsortedShit/Genkai/Genkai
+UnsortedShit/genma/genma
+UnsortedShit/gh0/gh0
+UnsortedShit/gideon/gideon
+UnsortedShit/Gigi/Gigi
+UnsortedShit/gill/gill
+UnsortedShit/ginzu/ginzu
+UnsortedShit/girls/girls
+UnsortedShit/glacius/glacius
+;UnsortedShit/Gladiator/Gladiator
+UnsortedShit/glguy/glguy
+UnsortedShit/Gloria_DM/Gloria_DM
+UnsortedShit/gman/gman
+UnsortedShit/goat/goat
+UnsortedShit/god mizuchi/god mizuchi
+UnsortedShit/god orochi/god orochi
+UnsortedShit/God Rugal/God Rugal
+UnsortedShit/god silver/god silver
+UnsortedShit/godman/godman
+;UnsortedShit/God_Ginrai/God_Ginrai
+UnsortedShit/god_rugal/god_rugal
+UnsortedShit/goenitz/goenitz
+UnsortedShit/Goketuji/Goketuji
+UnsortedShit/Goodman/Goodman
+UnsortedShit/Gow/Gow
+UnsortedShit/GR/GR
+UnsortedShit/grant/grant
+UnsortedShit/gray/gray
+;UnsortedShit/great/great
+UnsortedShit/GreenArrow0/GreenArrow0
+UnsortedShit/greendevil/greendevil
+
+UnsortedShit/Grizela/Grizela
+UnsortedShit/GUNLOC/GUNLOC
+UnsortedShit/gunter/gunter
+UnsortedShit/guro/guro
+;UnsortedShit/gyouza/gyouza
+UnsortedShit/hanbaedal/hanbaedal
+UnsortedShit/Han_Baedal/Han_Baedal
+UnsortedShit/Han_BDS/Han_BDS
+UnsortedShit/haohmaru/haohmaru
+UnsortedShit/Harpagos/Harpagos
+UnsortedShit/Haruka_Kutsuna/Haruka_Kutsuna
+UnsortedShit/Haruno Sakura/Haruno Sakura
+UnsortedShit/Hayate_XI/Hayate_XI
+UnsortedShit/Hazama/Hazama
+UnsortedShit/hebiitigo/hebiitigo
+UnsortedShit/heidern/heidern
+UnsortedShit/HellBoy/HellBoy
+UnsortedShit/hideo/hideo
+UnsortedShit/hiel/hiel
+UnsortedShit/Hien/Hien
+UnsortedShit/HighwayStar/HighwayStar
+UnsortedShit/higyopam/higyopam
+UnsortedShit/hilda/hilda
+UnsortedShit/hinako/hinako
+UnsortedShit/hinata/hinata
+UnsortedShit/Hinata_COSPLAY/Hinata_COSPLAY
+UnsortedShit/hken/hken
+UnsortedShit/Hokage_COSPLAY/Hokage_COSPLAY
+UnsortedShit/hokutomaru/hokutomaru
+UnsortedShit/hol2/hol2
+UnsortedShit/hon fu/hon fu
+UnsortedShit/Honda_Tadakatsu/Honda_Tadakatsu
+UnsortedShit/honey/honey
+UnsortedShit/Hoya/Hoya
+UnsortedShit/Huey/Huey
+UnsortedShit/hugo/hugo
+UnsortedShit/HumanTorch/HumanTorch
+UnsortedShit/Hyuuga Akiko/Hyuuga Akiko
+UnsortedShit/Iari/Iari
+UnsortedShit/Ibuki/Ibuki
+UnsortedShit/ichi/ichi
+UnsortedShit/igniz/igniz
+UnsortedShit/iki/iki
+UnsortedShit/Ikkaku/Ikkaku
+UnsortedShit/infa/infa
+UnsortedShit/Infinite/Infinite
+UnsortedShit/iroha/iroha
+UnsortedShit/Iron Skull/Iron Skull
+UnsortedShit/ironclara/ironclara
+UnsortedShit/Ironhide/Ironhide
+UnsortedShit/ironlantern/ironlantern
+UnsortedShit/IronPatriot/IronPatriot
+UnsortedShit/Irriana/Irriana
+UnsortedShit/isabeau/isabeau
+;UnsortedShit/itachi/itachi
+UnsortedShit/itigo/itigo
+UnsortedShit/Ivy/Ivy
+;UnsortedShit/Iwao/Iwao
+UnsortedShit/J/J
+UnsortedShit/jabu/jabu
+UnsortedShit/Jack/Jack
+UnsortedShit/Jackie_DrunkenFist/Jackie_DrunkenFist
+UnsortedShit/Jack_Inf/Jack_Inf
+UnsortedShit/JAGI/JAGI
+UnsortedShit/Jago_KI2/Jago_KI2
+UnsortedShit/jam/jam
+UnsortedShit/jam_xx/jam_xx
+UnsortedShit/JAN/JAN
+UnsortedShit/Janne/Janne
+UnsortedShit/jarred/jarred
+UnsortedShit/Jazu_XI/Jazu_XI
+UnsortedShit/Jazz/Jazz
+UnsortedShit/Jc/Jc
+UnsortedShit/Jean/Jean
+UnsortedShit/JeanGrey/JeanGrey
+UnsortedShit/jeanpx/jeanpx
+UnsortedShit/jedah/jedah
+UnsortedShit/jess/jess
+UnsortedShit/jhun/jhun
+UnsortedShit/jimmylee/jimmylee
+UnsortedShit/Jin Kazama/Jin Kazama
+UnsortedShit/Jinnu/Jinnu
+UnsortedShit/Jin_Kisaragi_XI/Jin_Kisaragi_XI
+UnsortedShit/Jin_MC/Jin_MC
+UnsortedShit/Jin_mc2/Jin_mc2
+UnsortedShit/Jiroubou_COSPLAY/Jiroubou_COSPLAY
+UnsortedShit/jissou/jissou
+UnsortedShit/joh/joh
+UnsortedShit/johann/johann
+UnsortedShit/John AoF2_SD/John AoF2_SD
+UnsortedShit/johnny/johnny
+UnsortedShit/JohnStewart/JohnStewart
+UnsortedShit/Jones/Jones
+UnsortedShit/jp/jp
+UnsortedShit/JSA Flash/JSA Flash
+UnsortedShit/jubei/jubei
+UnsortedShit/Judith/Judith
+UnsortedShit/juggy/juggy
+UnsortedShit/juli/juli
+UnsortedShit/juni/juni
+UnsortedShit/Jurane/Jurane
+UnsortedShit/j_carn/j_carn
+UnsortedShit/J_ignis/J_ignis
+UnsortedShit/K/K
+UnsortedShit/k 2/k 2
+UnsortedShit/K'oss/K'oss
+UnsortedShit/k-blood/k-blood
+UnsortedShit/k2000/k2000
+UnsortedShit/k9999/k9999
+UnsortedShit/k9999 2/k9999 2
+UnsortedShit/kabal/kabal
+UnsortedShit/Kaede/Kaede
+UnsortedShit/Kaedem/Kaedem
+UnsortedShit/Kafuin Gaira/Kafuin Gaira
+UnsortedShit/Kagome/Kagome
+UnsortedShit/Kai Harn/Kai Harn
+UnsortedShit/Kain/Kain
+UnsortedShit/KainBlade/KainBlade
+UnsortedShit/kaioshin/kaioshin
+UnsortedShit/kakashi/kakashi
+UnsortedShit/kakyoin/kakyoin
+UnsortedShit/Kall Su/Kall Su
+UnsortedShit/kame/kame
+UnsortedShit/Kamek/Kamek
+UnsortedShit/Kaname/Kaname
+UnsortedShit/kang/kang
+UnsortedShit/Kaori/Kaori
+UnsortedShit/karai/karai
+UnsortedShit/Karate Guys/Karate Guys
+UnsortedShit/Karen_na_Hito/Karen_na_Hito
+UnsortedShit/karnov/karnov
+UnsortedShit/kasumi/kasumi
+UnsortedShit/Kasumi_WPrE/Kasumi_WPrE
+UnsortedShit/Kasunago/Kasunago
+UnsortedShit/kato/kato
+UnsortedShit/kazuki/kazuki
+UnsortedShit/Kei/Kei
+UnsortedShit/keith/keith
+UnsortedShit/Kensou_XI/Kensou_XI
+UnsortedShit/kevin/kevin
+UnsortedShit/Kevin Rian/Kevin Rian
+UnsortedShit/KF/KF
+UnsortedShit/kfg/kfg
+UnsortedShit/kfm/kfm
+UnsortedShit/kfm720/kfm720
+;UnsortedShit/khan/khan
+UnsortedShit/Kiba/Kiba
+UnsortedShit/kiba_chibi/kiba_chibi
+UnsortedShit/Kiba_COSPLAY/Kiba_COSPLAY
+UnsortedShit/kidd/kidd
+;UnsortedShit/killa/killa
+UnsortedShit/Kimimaro/Kimimaro
+UnsortedShit/Kim_Wu_KI2/Kim_Wu_KI2
+UnsortedShit/kinu_EX/kinu_EX
+UnsortedShit/kirakira/kirakira
+UnsortedShit/kirino/kirino
+UnsortedShit/kisarah/kisarah
+UnsortedShit/kishima/kishima
+UnsortedShit/kliff/kliff
+UnsortedShit/Knight/Knight
+UnsortedShit/Kodi/Kodi
+UnsortedShit/kojiroh/kojiroh
+;UnsortedShit/komepo/komepo
+UnsortedShit/konel/konel
+UnsortedShit/koola/koola
+UnsortedShit/Kosanjou/Kosanjou
+UnsortedShit/kouryu/kouryu
+UnsortedShit/Kraken/Kraken
+UnsortedShit/krizalid_n/krizalid_n
+UnsortedShit/KT/KT
+UnsortedShit/kte/kte
+UnsortedShit/kubota/kubota
+UnsortedShit/Kui/Kui
+UnsortedShit/kula/kula
+UnsortedShit/kula_XI/kula_XI
+UnsortedShit/kumi_okubo/kumi_okubo
+UnsortedShit/kurenai/kurenai
+UnsortedShit/kurihan/kurihan
+UnsortedShit/kuririn/kuririn
+UnsortedShit/Kurokisi/Kurokisi
+UnsortedShit/kusanagi/kusanagi
+UnsortedShit/kusaregedo/kusaregedo
+UnsortedShit/kwhale/kwhale
+UnsortedShit/Kyashan/Kyashan
+UnsortedShit/ky_slash/ky_slash
+UnsortedShit/k_carol/k_carol
+UnsortedShit/Lady Aozaki/Lady Aozaki
+UnsortedShit/LadyDeathstrike/LadyDeathstrike
+UnsortedShit/Lambda/Lambda
+UnsortedShit/larcen/larcen
+UnsortedShit/Lars/Lars
+UnsortedShit/Lasher/Lasher
+UnsortedShit/lauren/lauren
+UnsortedShit/laurence/laurence
+;UnsortedShit/Law/Law
+UnsortedShit/layla/layla
+UnsortedShit/Lee/Lee
+UnsortedShit/lee fhd/lee fhd
+UnsortedShit/leerekka/leerekka
+UnsortedShit/Lee_COSPLAY/Lee_COSPLAY
+UnsortedShit/Lee_nbc/Lee_nbc
+UnsortedShit/Lei-Lei/Lei-Lei
+UnsortedShit/LennyCreston[Keyu]/LennyCreston[Keyu]
+UnsortedShit/li-shenglong/li-shenglong
+UnsortedShit/lin/lin
+UnsortedShit/Linda/Linda
+UnsortedShit/Link/Link
+UnsortedShit/Link_NJ/Link_NJ
+UnsortedShit/linn_kurosawa/linn_kurosawa
+UnsortedShit/lion magnus/lion magnus
+UnsortedShit/Lionhalt/Lionhalt
+UnsortedShit/Liono/Liono
+UnsortedShit/lisa/lisa
+UnsortedShit/LizardMan/LizardMan
+UnsortedShit/Liza[Ryokucha]/Liza[Ryokucha]
+UnsortedShit/Lobo/Lobo
+UnsortedShit/logan/logan
+UnsortedShit/Lord Ravenous/Lord Ravenous
+UnsortedShit/lt_vayeate/lt_vayeate
+UnsortedShit/lucia/lucia
+UnsortedShit/Lucifer/Lucifer
+UnsortedShit/Lucifer_T/Lucifer_T
+UnsortedShit/lucky/lucky
+UnsortedShit/Lucy Diclonius/Lucy Diclonius
+UnsortedShit/luffy/luffy
+UnsortedShit/luigi/luigi
+UnsortedShit/lunch/lunch
+UnsortedShit/lupin/lupin
+UnsortedShit/Lu_saifa/Lu_saifa
+UnsortedShit/Lv2 Shin Akuma/Lv2 Shin Akuma
+UnsortedShit/lynn/lynn
+UnsortedShit/Lynn Baker Neo/Lynn Baker Neo
+UnsortedShit/M.O.D.O.K/M.O.D.O.K
+UnsortedShit/madiesha/madiesha
+UnsortedShit/mad_predator/mad_predator
+UnsortedShit/Maeda_Keiji/Maeda_Keiji
+UnsortedShit/mako/mako
+UnsortedShit/malin/malin
+UnsortedShit/mamiya/mamiya
+UnsortedShit/mana/mana
+UnsortedShit/mand18v592/mand18v592
+UnsortedShit/Mao_WPrE/Mao_WPrE
+UnsortedShit/maraiah/maraiah
+UnsortedShit/Mariah/Mariah
+UnsortedShit/Maria_Christel/Maria_Christel
+UnsortedShit/Marie/Marie
+UnsortedShit/Marilyn/Marilyn
+UnsortedShit/Marilyn_MKT/Marilyn_MKT
+UnsortedShit/marrow/marrow
+UnsortedShit/mars people/mars people
+UnsortedShit/MARSTRIUS/MARSTRIUS
+UnsortedShit/maskedWarrior/maskedWarrior
+UnsortedShit/mastergambit/mastergambit
+UnsortedShit/masterhuang/masterhuang
+UnsortedShit/mature/mature
+UnsortedShit/mauru/mauru
+UnsortedShit/Max/Max
+UnsortedShit/maxima_PRO/maxima_PRO
+UnsortedShit/maylee/maylee
+;UnsortedShit/me/me
+UnsortedShit/mechgouki/mechgouki
+UnsortedShit/mech_rugal/mech_rugal
+;UnsortedShit/Medusa_PCE/Medusa_PCE
+UnsortedShit/Megazord/Megazord
+UnsortedShit/Mega_Weapon/Mega_Weapon
+UnsortedShit/megumi/megumi
+UnsortedShit/megumi_suzuki/megumi_suzuki
+UnsortedShit/Megu_Asuhara/Megu_Asuhara
+UnsortedShit/meiya/meiya
+UnsortedShit/meiya_striker/meiya_striker
+UnsortedShit/meizi/meizi
+UnsortedShit/MercenaryTao/MercenaryTao
+UnsortedShit/Metalhead/Metalhead
+UnsortedShit/MetalixMH/MetalixMH
+UnsortedShit/Metallo/Metallo
+UnsortedShit/mexican typhoon/mexican typhoon
+UnsortedShit/MHand/MHand
+UnsortedShit/Michael/Michael
+UnsortedShit/MIDLER/MIDLER
+UnsortedShit/midnight/midnight
+UnsortedShit/Mika/Mika
+UnsortedShit/mike/mike
+UnsortedShit/miketyson/miketyson
+UnsortedShit/miku/miku
+UnsortedShit/Miku_TT/Miku_TT
+UnsortedShit/Milan/Milan
+UnsortedShit/Mildred_Avallone/Mildred_Avallone
+UnsortedShit/mileena/mileena
+UnsortedShit/millarca/millarca
+UnsortedShit/Milus Lilith/Milus Lilith
+UnsortedShit/mimic/mimic
+UnsortedShit/mina/mina
+UnsortedShit/minis/minis
+UnsortedShit/Mio/Mio
+UnsortedShit/Misaka Mikoto/Misaka Mikoto
+UnsortedShit/Mishio/Mishio
+UnsortedShit/Misuzu_Kurenai/Misuzu_Kurenai
+UnsortedShit/miza/miza
+UnsortedShit/Mizuchi/Mizuchi
+;;UnsortedShit/mm_rox/mm_rox
+UnsortedShit/modo/modo
+UnsortedShit/moe/moe
+UnsortedShit/Moleman/Moleman
+UnsortedShit/momoko/momoko
+UnsortedShit/morfo/morfo
+UnsortedShit/Moriya/Moriya
+UnsortedShit/morph/morph
+UnsortedShit/motoko_aoyama/motoko_aoyama
+UnsortedShit/mr big/mr big
+UnsortedShit/mudman/mudman
+UnsortedShit/mukai/mukai
+UnsortedShit/Mukin/Mukin
+UnsortedShit/mukuro/mukuro
+UnsortedShit/MukuroFM/MukuroFM
+UnsortedShit/multipleman/multipleman
+UnsortedShit/Munch/Munch
+UnsortedShit/musashi/musashi
+UnsortedShit/Mustapha/Mustapha
+UnsortedShit/Mycale_MKT/Mycale_MKT
+UnsortedShit/mysp/mysp
+UnsortedShit/m_burns/m_burns
+;UnsortedShit/n-freeza/n-freeza
+UnsortedShit/nachi/nachi
+UnsortedShit/Nameless One/Nameless One
+UnsortedShit/namor/namor
+UnsortedShit/nana_owada/nana_owada
+UnsortedShit/Nao/Nao
+UnsortedShit/Naraku/Naraku
+UnsortedShit/Natalia Glinka/Natalia Glinka
+UnsortedShit/natasha/natasha
+;UnsortedShit/nate/nate
+UnsortedShit/Natsume[Keyu]/Natsume[Keyu]
+UnsortedShit/natsumi/natsumi
+UnsortedShit/Necro/Necro
+UnsortedShit/Neji/Neji
+UnsortedShit/NEJI_COSPLAY/NEJI_COSPLAY
+UnsortedShit/neko/neko
+UnsortedShit/nemesis/nemesis
+UnsortedShit/Neo Kazuma/Neo Kazuma
+UnsortedShit/Neoblood Akuma/Neoblood Akuma
+UnsortedShit/neolynn/neolynn
+UnsortedShit/neon/neon
+;UnsortedShit/neoseph/neoseph
+UnsortedShit/Nero/Nero
+UnsortedShit/Nero2/Nero2
+UnsortedShit/nero_DMC4/nero_DMC4
+UnsortedShit/new_cool_choi/new_cool_choi
+UnsortedShit/nezi/nezi
+UnsortedShit/nickfury/nickfury
+UnsortedShit/Nicola/Nicola
+UnsortedShit/nicole/nicole
+UnsortedShit/Nightcrawler/Nightcrawler
+UnsortedShit/Nightmare/Nightmare
+UnsortedShit/Nightwolf/Nightwolf
+UnsortedShit/Ninja Megazord/Ninja Megazord
+UnsortedShit/nobunaga/nobunaga
+UnsortedShit/Nollie/Nollie
+UnsortedShit/noobieta/noobieta
+UnsortedShit/Nool/Nool
+UnsortedShit/norimaro/norimaro
+UnsortedShit/November/November
+UnsortedShit/nyaonyao/nyaonyao
+UnsortedShit/ods/ods
+;UnsortedShit/ogita/ogita
+UnsortedShit/ogre/ogre
+UnsortedShit/oichi/oichi
+UnsortedShit/ojisama_c/ojisama_c
+UnsortedShit/OLOF/OLOF
+UnsortedShit/omega red/omega red
+UnsortedShit/omegagoku/omegagoku
+;UnsortedShit/OmegaTH/OmegaTH
+;UnsortedShit/ONCV/ONCV
+UnsortedShit/ONI2/ONI2
+UnsortedShit/oniken/oniken
+UnsortedShit/ooz/ooz
+UnsortedShit/oozaru/oozaru
+UnsortedShit/Oro/Oro
+UnsortedShit/orochi iroi/orochi iroi
+UnsortedShit/orochi ken/orochi ken
+UnsortedShit/Orochi Rugal/Orochi Rugal
+UnsortedShit/orochimaru/orochimaru
+UnsortedShit/Orochi_/Orochi_
+UnsortedShit/Ortega/Ortega
+UnsortedShit/Oryou/Oryou
+UnsortedShit/Oshima/Oshima
+UnsortedShit/Oswald_XI/Oswald_XI
+
+UnsortedShit/p2/p2
+UnsortedShit/Pan/Pan
+UnsortedShit/Pan Transform/Pan Transform
+UnsortedShit/panchan/panchan
+UnsortedShit/pantyhose_taro/pantyhose_taro
+UnsortedShit/Parace_L'sia/Parace_L'sia
+UnsortedShit/Patchouli/Patchouli
+UnsortedShit/patrick1105/patrick1105
+UnsortedShit/PChunli/PChunli
+UnsortedShit/pedro/pedro
+UnsortedShit/pengintou/pengintou
+UnsortedShit/pepe/pepe
+UnsortedShit/Perfect Storm X/Perfect Storm X
+UnsortedShit/perfecti/perfecti
+UnsortedShit/peter/peter
+UnsortedShit/PETRA_R/PETRA_R
+UnsortedShit/petshop/petshop
+UnsortedShit/Phage/Phage
+UnsortedShit/Picurin/Picurin
+UnsortedShit/pika/pika
+UnsortedShit/pitt/pitt
+;UnsortedShit/pizza/pizza
+UnsortedShit/pj_hinata/pj_hinata
+UnsortedShit/pj_tiffany/pj_tiffany
+UnsortedShit/PlasticMan/PlasticMan
+UnsortedShit/poc-mario/poc-mario
+UnsortedShit/pol/pol
+UnsortedShit/Polaris/Polaris
+UnsortedShit/polymar/polymar
+UnsortedShit/Poppy Zero/Poppy Zero
+UnsortedShit/Poppy_ZERO/Poppy_ZERO
+UnsortedShit/PowerGirl/PowerGirl
+UnsortedShit/predator_W/predator_W
+UnsortedShit/Priere_re/Priere_re
+UnsortedShit/private/private
+UnsortedShit/pshred/pshred
+;UnsortedShit/psycho weapon/psycho weapon
+;UnsortedShit/PunchingBag/PunchingBag
+UnsortedShit/pupa/pupa
+UnsortedShit/PURE&FUR/PURE&FUR
+UnsortedShit/pyron/pyron
+UnsortedShit/pyrons/pyrons
+UnsortedShit/pz/pz
+UnsortedShit/p_hunter/p_hunter
+UnsortedShit/q/q
+UnsortedShit/QBee/QBee
+UnsortedShit/qqboss/qqboss
+UnsortedShit/Quasar/Quasar
+UnsortedShit/r mika/r mika
+UnsortedShit/racheal/racheal
+UnsortedShit/radel/radel
+UnsortedShit/ragingken/ragingken
+UnsortedShit/Ragna/Ragna
+UnsortedShit/Ragna Mau/Ragna Mau
+UnsortedShit/Rai/Rai
+UnsortedShit/Rai-EX/Rai-EX
+UnsortedShit/raiya/raiya
+UnsortedShit/RajaaLilith/RajaaLilith
+UnsortedShit/RajaaSupergirl/RajaaSupergirl
+UnsortedShit/ralf2000/ralf2000
+UnsortedShit/Ramaya/Ramaya
+UnsortedShit/ramon/ramon
+UnsortedShit/Rana/Rana
+UnsortedShit/randy/randy
+UnsortedShit/ranko/ranko
+UnsortedShit/Ranmaru/Ranmaru
+UnsortedShit/RAOH/RAOH
+UnsortedShit/Raph/Raph
+UnsortedShit/RareAkuma/RareAkuma
+UnsortedShit/rasetumaru/rasetumaru
+UnsortedShit/Rash/Rash
+UnsortedShit/ravenous/ravenous
+UnsortedShit/rax/rax
+UnsortedShit/ray/ray
+UnsortedShit/rayman/rayman
+UnsortedShit/RazorClaws/RazorClaws
+UnsortedShit/Reak/Reak
+UnsortedShit/reayonis/reayonis
+UnsortedShit/Rebecca/Rebecca
+UnsortedShit/red/red
+UnsortedShit/red arremer/red arremer
+UnsortedShit/red snake/red snake
+UnsortedShit/RedLantern/RedLantern
+UnsortedShit/Reflector/Reflector
+UnsortedShit/Rei/Rei
+UnsortedShit/reiji/reiji
+UnsortedShit/reika/reika
+UnsortedShit/reimi/reimi
+UnsortedShit/Remy/Remy
+UnsortedShit/RenMH/RenMH
+UnsortedShit/rera/rera
+UnsortedShit/Resistence/Resistence
+UnsortedShit/RE_Blade/RE_Blade
+UnsortedShit/RHINO_EOH/RHINO_EOH
+UnsortedShit/RightHandUndeadSoldier/RightHandUndeadSoldier
+UnsortedShit/rikuo/rikuo
+UnsortedShit/rila/rila
+UnsortedShit/rimle/rimle
+UnsortedShit/Rimururu/Rimururu
+UnsortedShit/Riot_SW/Riot_SW
+UnsortedShit/rlee/rlee
+UnsortedShit/robert/robert
+UnsortedShit/Roomi/Roomi
+UnsortedShit/Rose/Rose
+UnsortedShit/Rouge/Rouge
+UnsortedShit/RougeMH/RougeMH
+UnsortedShit/ROXY/ROXY
+UnsortedShit/Royal Guard/Royal Guard
+UnsortedShit/roymaster/roymaster
+UnsortedShit/rubber/rubber
+UnsortedShit/Rubette/Rubette
+UnsortedShit/ryouga/ryouga
+UnsortedShit/ryuji/ryuji
+UnsortedShit/RYUKO1st/RYUKO1st
+UnsortedShit/RYUKO2nd/RYUKO2nd
+UnsortedShit/R_Saber/R_Saber
+UnsortedShit/s-andy/s-andy
+UnsortedShit/S-Zuru/S-Zuru
+;UnsortedShit/saba/saba
+UnsortedShit/sabre/sabre
+UnsortedShit/Sachiel/Sachiel
+UnsortedShit/Sahad/Sahad
+UnsortedShit/saisyu/saisyu
+UnsortedShit/saizo/saizo
+UnsortedShit/Sakon_COSPLAY/Sakon_COSPLAY
+UnsortedShit/SallyMH/SallyMH
+UnsortedShit/sam/sam
+UnsortedShit/Sanada_Yukimura/Sanada_Yukimura
+UnsortedShit/sandman/sandman
+UnsortedShit/sandy/sandy
+UnsortedShit/sango/sango
+UnsortedShit/sara_CAT/sara_CAT
+UnsortedShit/sasquatch/sasquatch
+UnsortedShit/sasuke-kun/sasuke-kun
+UnsortedShit/SASUKE_COSPLAY/SASUKE_COSPLAY
+UnsortedShit/satsuki/satsuki
+UnsortedShit/sauri/sauri
+UnsortedShit/sayaman-ub22/sayaman-ub22
+UnsortedShit/Scarletspider/Scarletspider
+UnsortedShit/Scorn/Scorn
+UnsortedShit/Scream/Scream
+UnsortedShit/SE/SE
+UnsortedShit/Seisai/Seisai
+UnsortedShit/Sektor/Sektor
+UnsortedShit/sener/sener
+UnsortedShit/senryo/senryo
+UnsortedShit/SentAttack/SentAttack
+UnsortedShit/senti/senti
+UnsortedShit/Sentry/Sentry
+UnsortedShit/seth_N/seth_N
+UnsortedShit/setsuna/setsuna
+UnsortedShit/sg/sg
+UnsortedShit/Shadow/Shadow
+UnsortedShit/shadowec/shadowec
+UnsortedShit/ShadowMH/ShadowMH
+UnsortedShit/shaia/shaia
+UnsortedShit/sheana/sheana
+UnsortedShit/sheen/sheen
+UnsortedShit/SHEEVA/SHEEVA
+UnsortedShit/Shen2/Shen2
+UnsortedShit/sheng/sheng
+UnsortedShit/shera/shera
+UnsortedShit/shermie/shermie
+UnsortedShit/shigen/shigen
+UnsortedShit/Shikamaru_COSPLAY/Shikamaru_COSPLAY
+UnsortedShit/Shin/Shin
+UnsortedShit/shingo/shingo
+UnsortedShit/Shingo2/Shingo2
+UnsortedShit/Shinnosuke/Shinnosuke
+UnsortedShit/Shinobu_Kawasaki/Shinobu_Kawasaki
+UnsortedShit/Shino_COSPLAY/Shino_COSPLAY
+UnsortedShit/shinryu/shinryu
+UnsortedShit/shion/shion
+UnsortedShit/shiryugs/shiryugs
+UnsortedShit/shiva/shiva
+UnsortedShit/Shizuka_Minakami/Shizuka_Minakami
+UnsortedShit/shizumaru/shizumaru
+UnsortedShit/shizumaru_C/shizumaru_C
+UnsortedShit/sho/sho
+UnsortedShit/Shocker/Shocker
+UnsortedShit/Shumag/Shumag
+UnsortedShit/Sideswipe/Sideswipe
+UnsortedShit/Sieger/Sieger
+UnsortedShit/SilentStorm/SilentStorm
+UnsortedShit/Silver_XI/Silver_XI
+UnsortedShit/simba/simba
+UnsortedShit/simonkin/simonkin
+UnsortedShit/simonkin2006/simonkin2006
+UnsortedShit/Sinestro/Sinestro
+;UnsortedShit/sinku/sinku
+UnsortedShit/sion tatari/sion tatari
+UnsortedShit/sion_t/sion_t
+UnsortedShit/Sirius spectre/Sirius spectre
+UnsortedShit/sissy/sissy
+UnsortedShit/skeletor/skeletor
+UnsortedShit/SkyChase/SkyChase
+UnsortedShit/Skywarp/Skywarp
+UnsortedShit/slash/slash
+UnsortedShit/SLAYER/SLAYER
+UnsortedShit/SLAYER2/SLAYER2
+UnsortedShit/Sledge/Sledge
+UnsortedShit/SMoonGS/SMoonGS
+UnsortedShit/SnakeEyes/SnakeEyes
+UnsortedShit/sogetsu/sogetsu
+UnsortedShit/sokaku/sokaku
+UnsortedShit/Solis/Solis
+UnsortedShit/sora/sora
+UnsortedShit/Soul Calibur/Soul Calibur
+UnsortedShit/SoulGen/SoulGen
+UnsortedShit/spartan/spartan
+;UnsortedShit/Sparta_Heika/Sparta_Heika
+UnsortedShit/spawn/spawn
+UnsortedShit/spelunker/spelunker
+;UnsortedShit/spelunker_sensei/spelunker_sensei
+UnsortedShit/spidercarnage/spidercarnage
+UnsortedShit/SPIRAL/SPIRAL
+UnsortedShit/Steel/Steel
+UnsortedShit/Storm Shadow/Storm Shadow
+UnsortedShit/stormx/stormx
+UnsortedShit/StrengthTraining/StrengthTraining
+UnsortedShit/Strider Hien/Strider Hien
+UnsortedShit/strong guy/strong guy
+UnsortedShit/sula/sula
+UnsortedShit/Sumeragi_Kuon/Sumeragi_Kuon
+UnsortedShit/Sunfire/Sunfire
+UnsortedShit/Sunstreaker/Sunstreaker
+UnsortedShit/Super/Super
+UnsortedShit/Superboy/Superboy
+UnsortedShit/superkurara/superkurara
+UnsortedShit/Superskrull/Superskrull
+UnsortedShit/suwari_heika/suwari_heika
+UnsortedShit/sylphie/sylphie
+UnsortedShit/Synn/Synn
+UnsortedShit/Syo Hayate/Syo Hayate
+UnsortedShit/Syo-Kirishima/Syo-Kirishima
+UnsortedShit/syous/syous
+UnsortedShit/s_chang/s_chang
+UnsortedShit/tabasa/tabasa
+UnsortedShit/TabasaFM/TabasaFM
+UnsortedShit/Tain-ren/Tain-ren
+UnsortedShit/Takuma/Takuma
+UnsortedShit/Takuma_Sakazaki/Takuma_Sakazaki
+UnsortedShit/talbain/talbain
+UnsortedShit/tamao/tamao
+UnsortedShit/tamtam/tamtam
+UnsortedShit/taneume/taneume
+UnsortedShit/tao-jun/tao-jun
+UnsortedShit/TaoFM/TaoFM
+UnsortedShit/Taokaka_CSE/Taokaka_CSE
+UnsortedShit/targetwall/targetwall
+UnsortedShit/Taskmaster/Taskmaster
+UnsortedShit/Tatsuki_Arisawa/Tatsuki_Arisawa
+;UnsortedShit/Tayuya_COSPLAY/Tayuya_COSPLAY
+UnsortedShit/TB_Lucario/TB_Lucario
+UnsortedShit/tekkaman/tekkaman
+UnsortedShit/Temari_COSPLAY/Temari_COSPLAY
+UnsortedShit/ten/ten
+UnsortedShit/Tenjou-jin/Tenjou-jin
+UnsortedShit/Tenjou-Sin/Tenjou-Sin
+UnsortedShit/Tenten/Tenten
+UnsortedShit/tenten_COSPLAY/tenten_COSPLAY
+UnsortedShit/testa/testa
+UnsortedShit/tetuwo/tetuwo
+UnsortedShit/Thanos/Thanos
+UnsortedShit/The Undertaker/The Undertaker
+UnsortedShit/thething/thething
+UnsortedShit/Thin/Thin
+UnsortedShit/thing/thing
+UnsortedShit/think/think
+UnsortedShit/Thinnen/Thinnen
+UnsortedShit/Thundercracker/Thundercracker
+UnsortedShit/tia/tia
+UnsortedShit/tibigintou/tibigintou
+UnsortedShit/Tiger/Tiger
+UnsortedShit/TigreNegro/TigreNegro
+UnsortedShit/Tina_A/Tina_A
+UnsortedShit/titi/titi
+UnsortedShit/tizoc/tizoc
+UnsortedShit/TJ Combo/TJ Combo
+UnsortedShit/TK-Matrix/TK-Matrix
+;UnsortedShit/TKCV/TKCV
+UnsortedShit/todo/todo
+UnsortedShit/TOKI/TOKI
+UnsortedShit/TONPOOH/TONPOOH
+UnsortedShit/torao/torao
+UnsortedShit/Toshiro_Hitsugaya/Toshiro_Hitsugaya
+UnsortedShit/toushi/toushi
+UnsortedShit/Trevor/Trevor
+UnsortedShit/trident/trident
+UnsortedShit/Tsu/Tsu
+UnsortedShit/tsugumi/tsugumi
+UnsortedShit/Tung/Tung
+UnsortedShit/tung 2/tung 2
+UnsortedShit/Tusk_KI2/Tusk_KI2
+UnsortedShit/twelve/twelve
+UnsortedShit/twin_carmilla/twin_carmilla
+UnsortedShit/twin_nina/twin_nina
+UnsortedShit/twin_syllin/twin_syllin
+UnsortedShit/Ty/Ty
+UnsortedShit/tye/tye
+UnsortedShit/T_ninja/T_ninja
+UnsortedShit/Uesugi_Kensin/Uesugi_Kensin
+UnsortedShit/Ukitake/Ukitake
+UnsortedShit/Ultimate_Aizen/Ultimate_Aizen
+UnsortedShit/ultrarox_clark/ultrarox_clark
+UnsortedShit/ultrarox_k9999/ultrarox_k9999
+UnsortedShit/ultron/ultron
+UnsortedShit/UndeadHero/UndeadHero
+UnsortedShit/UNKNOWN/UNKNOWN
+UnsortedShit/ur/ur
+UnsortedShit/urien/urien
+UnsortedShit/usapi/usapi
+UnsortedShit/usasuke/usasuke
+UnsortedShit/Valgar_BDS/Valgar_BDS
+UnsortedShit/Vanessa_XI/Vanessa_XI
+UnsortedShit/vanillaice/vanillaice
+UnsortedShit/venon/venon
+UnsortedShit/victor/victor
+UnsortedShit/VicViper/VicViper
+UnsortedShit/Violent Yamazaki/Violent Yamazaki
+UnsortedShit/visbou/visbou
+UnsortedShit/viuda_negra/viuda_negra
+UnsortedShit/wal/wal
+UnsortedShit/walkure-OGGY/walkure-OGGY
+UnsortedShit/wanfu/wanfu
+UnsortedShit/warakia/warakia
+UnsortedShit/Warakia_T/Warakia_T
+UnsortedShit/wb/wb
+UnsortedShit/whp_erick/whp_erick
+UnsortedShit/wh_rasputin/wh_rasputin
+UnsortedShit/william/william
+UnsortedShit/Willow/Willow
+UnsortedShit/wind/wind
+;UnsortedShit/wireboxer/wireboxer
+UnsortedShit/wkex-mt/wkex-mt
+UnsortedShit/wonder/wonder
+UnsortedShit/wonder_momo/wonder_momo
+UnsortedShit/wood/wood
+UnsortedShit/wraith/wraith
+UnsortedShit/wulong/wulong
+UnsortedShit/X/X
+UnsortedShit/xanmi/xanmi
+UnsortedShit/xavier/xavier
+UnsortedShit/xiangfei/xiangfei
+UnsortedShit/xiaoyen/xiaoyen
+UnsortedShit/xi_lucy/xi_lucy
+;UnsortedShit/xmix/xmix
+UnsortedShit/yagumo/yagumo
+UnsortedShit/Yamato/Yamato
+UnsortedShit/Yamato Kazuma/Yamato Kazuma
+UnsortedShit/yamazaki/yamazaki
+UnsortedShit/yamchaw/yamchaw
+UnsortedShit/yamisaka_kureha/yamisaka_kureha
+UnsortedShit/Yang/Yang
+UnsortedShit/yashaoh/yashaoh
+UnsortedShit/yashiroEX/yashiroEX
+UnsortedShit/Yasutora_Sado/Yasutora_Sado
+UnsortedShit/yayoi/yayoi
+UnsortedShit/yellow/yellow
+;UnsortedShit/yellow-p/yellow-p
+UnsortedShit/YOH/YOH
+UnsortedShit/Yohko/Yohko
+UnsortedShit/Yoko_WPe/Yoko_WPe
+UnsortedShit/yoshimitsu/yoshimitsu
+UnsortedShit/Yu-Lan/Yu-Lan
+UnsortedShit/Yueng Soi Leng/Yueng Soi Leng
+UnsortedShit/YuGiHD/YuGiHD
+UnsortedShit/Yui_Kutuna/Yui_Kutuna
+UnsortedShit/yuki/yuki
+UnsortedShit/Yuki-Kushinada/Yuki-Kushinada
+UnsortedShit/yuki2/yuki2
+UnsortedShit/yukihime/yukihime
+UnsortedShit/Yukina_Himeragi/Yukina_Himeragi
+UnsortedShit/Yukino/Yukino
+UnsortedShit/Yuki_nbc/Yuki_nbc
+UnsortedShit/yumeji/yumeji
+UnsortedShit/yumi/yumi
+UnsortedShit/yun/yun
+UnsortedShit/yunfei/yunfei
+UnsortedShit/yungmie/yungmie
+UnsortedShit/Yusuke/Yusuke
+UnsortedShit/yuyu/yuyu
+UnsortedShit/Z/Z
+UnsortedShit/z-akuma/z-akuma
+UnsortedShit/zabel/zabel
+UnsortedShit/zabuza_COSPLAY/zabuza_COSPLAY
+UnsortedShit/zako-c/zako-c
+UnsortedShit/Zaku/Zaku
+UnsortedShit/zaku_chibi/zaku_chibi
+UnsortedShit/ZAKU_COSPLAY/ZAKU_COSPLAY
+UnsortedShit/Zalazof/Zalazof
+UnsortedShit/zankuro/zankuro
+UnsortedShit/zarbom/zarbom
+UnsortedShit/zemial/zemial
+UnsortedShit/Zero Nightdyne/Zero Nightdyne
+UnsortedShit/zerohighwaystar/zerohighwaystar
+UnsortedShit/zerox/zerox
+UnsortedShit/zidane/zidane
+;UnsortedShit/ZKenpachi/ZKenpachi
+UnsortedShit/zoi/zoi
+
+; QUESTIONABLE ONES
+UnsortedShit/delilah/delilah
+UnsortedShit/G13/G13
+
+; MURSU
+Mursu/CityHunter/CH-RyoS
+
+;BONUSSTAGES/CHARS
+
+
+;-----------------------
+[ExtraStages]
+ ;Put extra stages here. They will be available in VS and Watch modes.
+ ;For example, you can insert "stages/mybg.def".
+
+stages/2002korea3.def
+stages/2003hongkong1.def
+stages/2k_03.def
+stages/95_iori.def
+stages/96_iori.def
+stages/Agito.def
+stages/agony.def
+stages/Asuka120%_CathyWildStage.def
+stages/bckalley.def
+stages/birthday.def
+stages/bridge.def
+stages/bridgemoon.def
+stages/B_Osaka.def
+stages/cafe96.def
+stages/CHINART.def
+stages/CO.def
+stages/CvsBeco.def
+stages/festivaln.def
+stages/ff3_bash.def
+stages/GGI_UnderSea.def
+stages/GGX_axl.def
+stages/ggx_ma_bg.def
+stages/GG_sol.def
+stages/guilebg2.def
+stages/haiji.def
+stages/KOF2003_Korea2.def
+stages/kof2k-factory.def
+stages/kof95-ikari.def
+stages/korstret.def
+stages/kowloon.def
+stages/LS.def
+stages/metro.def
+stages/MZ.def
+stages/Neo.def
+stages/Oil.def
+stages/oldline.def
+stages/Omake.def
+stages/PGen.def
+stages/plantnw.def
+stages/restroom.def
+stages/roof_view.def
+stages/rotd-cas-stage.def
+stages/sewer.def
+stages/SJ.def
+stages/Stormy.def
+stages/TH.def
+stages/wharf.def
+stages/AURORA_CITY.def
+stages/tower.def
+stages/NBC-Planet-Open-Stage.def
+stages/Shield_Helicarrier.def
+stages/Botanical_Gardens.def
+stages/Shield_Helicarrier_Invasion.def
+
+
+
+
+;---------------------------------------------------------------------
+[Options]
+ ;Here you set the maximum number of matches to fight before game ends
+ ;in Arcade Mode. The first number is the number of matches against
+ ;characters with order=1, followed by order=2 and order=3 respectively.
+ ;For example, for 4,3,1 you will fight up to 4 randomly-picked
+ ;characters who have order=1, followed by 3 with order=2 and 1 with
+ ;order=3.
+arcade.maxmatches = 10
+
+ ;Maximum number of matches to fight before game ends in Team Mode.
+ ;Like arcade.maxmatches, but applies to Team Battle.
+team.maxmatches = 50,1,1,0,0,0,0,0,0,0
