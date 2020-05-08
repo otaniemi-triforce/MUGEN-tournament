@@ -197,13 +197,13 @@ class MugenOperator():
             # Char selected, check that it was same as it should be
             if(line.startswith("Selected char")):
                 num = int(line.split()[2])
-                pl = line.split()[5]
+                player = line.split()[5]
                 if(pl == "0.0"):
                     if(num != self.char1):
-                        self.debug("ERROR: Character mismatch. P"+str(pl)+" char should be "+str(self.char1)+", but "+str(num)+" was loaded!")
+                        self.debug("ERROR: Character mismatch. P"+str(player)+" char should be "+str(self.char1)+", but "+str(num)+" was loaded!")
                 else:
                     if(num != self.char2):
-                        self.debug("ERROR: Character mismatch. P"+str(pl)+" char should be "+str(self.char1)+", but "+str(num)+" was loaded!")
+                        self.debug("ERROR: Character mismatch. P"+str(player)+" char should be "+str(self.char2)+", but "+str(num)+" was loaded!")
             
             # Loading character
             if(line.startswith("Loading character")):
