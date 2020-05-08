@@ -84,7 +84,7 @@ class MugenOperator():
             os.startfile(PROCESS_NAME)  # Start MUGEN
         else:   # MUGEN is running, set current index to end of current logfile
             f = open(logfile)
-            self.index = len(f.readlines()-1)
+            self.index = len(f.readlines())-1
             f.close()
         processloaded = False
         while not processloaded:
@@ -113,7 +113,7 @@ class MugenOperator():
     
     # Return state of MUGEN
     def get_state(self):
-        if(are_you_still_there()):
+        if(self.are_you_still_there()):
             return self.state
         return DEAD_STATE
     
