@@ -64,7 +64,7 @@ class MugenOperator():
             try:
                 os.kill(self.p.pid, signal.SIGTERM)
             except PermissionError:
-                debug("Tried to kill MUGEN, but it seems to be already dead.")
+                self.debug("Tried to kill MUGEN, but it seems to be already dead.")
                 pass
         # If mugen is not already running (in most cases it shouldn't be)
         if (not self.are_you_still_there()):
