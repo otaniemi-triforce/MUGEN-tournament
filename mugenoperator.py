@@ -22,7 +22,7 @@ UP = 'w'            # Button to press to move up
 DOWN = 's'          # Button to press to move down
 
 ROUNDS = 2          # Rounds won required to win the match
-HOLDTIME = 0.02     # Time to hold r button
+HOLDTIME = 0.06     # Time to hold r button
 debug = True        # Enable debug prints
 
 
@@ -159,7 +159,7 @@ class MugenOperator():
 
     # Scan the log file and do operations based on lines there
     def scanlines(self):        
-        f = open(logfile,'r')           # Open logfile for reading
+        f = open(logfile,'r', encoding="utf8", errors="replace")   # Open logfile for reading
         lines = f.readlines()           # Read all lines to memory
         f.close()                       # Close the file for now   
 
@@ -198,7 +198,7 @@ class MugenOperator():
             if(line.startswith("Selected char")):
                 num = int(line.split()[2])
                 player = line.split()[5]
-                if(pl == "0.0"):
+                if(player == "0.0"):
                     if(num != self.char1):
                         self.debug("ERROR: Character mismatch. P"+str(player)+" char should be "+str(self.char1)+", but "+str(num)+" was loaded!")
                 else:
@@ -375,22 +375,23 @@ class MugenOperator():
 
     # Returns the number of winning player (1 or 2), -1 if no match has ended since last scan, 0 if draw (not sure when that would happen) 
     def scan(self):
-        oldstate = self.state
+#        oldstate = self.state
         self.scanlines()
-        if(oldstate != self.state or (self.state == SELECT_STATE and oldstate == SELECT_STATE)):    # Has Game state changed?
-            if(self.state == MENU_STATE):
-                self.press(OK,1)
-            elif(self.state == SELECT_STATE):
-                if(len(self.player1_chars) > 0 and len(self.player2_chars) > 0):
-                    self.press(OK,1) # TEAM MODE for P1 (single)
-                    self.select_char(self.player1_chars.pop(0),PLAYER1)
-                    self.press(OK,1) # TEAM MODE for P2 (single)
-                    self.select_char(self.player2_chars.pop(0),PLAYER2)
-                    self.press(OK,1) # STAGE SELECT (random)
-                    self.state = VS_STATE
-                    
-            elif(self.state == FIGHT_STATE):
-                pass    # Let 'em fight
+#        if(oldstate != self.state or (self.state == SELECT_STATE and oldstate == SELECT_STATE)):    # Has Game state changed?
+        if(self.state == MENU_STATE):
+            self.press(OK,1)
+            sleep(1)    # Ensures that mugen has time to move to a new state before next scan
+        elif(self.state == SELECT_STATE):
+            if(len(self.player1_chars) > 0 and len(self.player2_chars) > 0):
+                self.press(OK,1) # TEAM MODE for P1 (single)
+                self.select_char(self.player1_chars.pop(0),PLAYER1)
+                self.press(OK,1) # TEAM MODE for P2 (single)
+                self.select_char(self.player2_chars.pop(0),PLAYER2)
+                self.press(OK,1) # STAGE SELECT (random)
+                self.state = VS_STATE
+                
+        elif(self.state == FIGHT_STATE):
+            pass    # Let 'em fight
         ret = self.winner
         self.winner = -1
         return ret
@@ -436,4 +437,4 @@ def main():
         
 if __name__ == "__main__":
     main()
-'''
+'''   
